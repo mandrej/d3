@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    #chart {
+        width: 600px;
+        height: 400px;
+    }
+    .arc text, .legend text {
+        font: 12px sans-serif;
+/*        text-anchor: middle;*/
+/*        pointer-events: none;*/
+    }
+    .arc path {
+        stroke: #fff;
+    }
+</style>
+<body>
+<div id="chart"></div>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+    var chart = document.querySelector('#chart'),
+        styles = window.getComputedStyle(chart),
+        width = 540; //parseInt(styles.width),
+        height = 250; //parseInt(styles.height),
+        radius = height / 2;
+    
+    var colors = [
+        {name: 'red', hex: '#c00'},
+        {name: 'orange', hex: '#f90'},
+        {name: 'yellow', hex: '#ff0'},
+        {name: 'green', hex: '#0c0'},
+        {name: 'blue', hex: '#06f'},
+        {name: 'violet', hex: '#c0c'},
+        {name: 'dark', hex: '#111'},
+        {name: 'medium', hex: '#555'},
+        {name: 'light', hex: '#ccc'}
+    ];
+    
+    var key = 'Photo_tags';
+    var field = key.split('_').pop();
+    var slice_color = d3.scale.category20();
+    if (field == 'color') {
+        var slice_colors = d3.nest().key(function(d) { return d.name; })
+            .rollup(function(v) { return v[0].hex; }).map(colors);
+
+        slice_color = d3.scale.ordinal()
+            .domain(d3.keys(slice_colors))
+            .range(d3.values(slice_colors));
+    }
+
+    d3.json('data/' + key + '.json', function(error, raw) {
+        if (error) throw error;
+        var data = d3.entries(raw)
+            .sort(function(a, b) { return b.value - a.value; })
+            .slice(0, 11);
+        console.log(JSON.stringify(data));
+        
+        var arc = d3.svg.arc()
+            .outerRadius(radius)
+            .innerRadius(radius/2);
+
+        var pie = d3.layout.pie()
+            .value(function(d) { return d.value; });
+        
+        var svg = d3.select('#chart').append('svg')
+            .attr('width', width)
+            .attr('height', height)
+            .append('g')
+            .attr('transform', 'translate(' + height / 2 + ',' + height / 2 + ')');
+
+        var legendData = data.sort(function(a, b) { return b.value - a.value; }).slice(0, 9),
+            legendRectSize = 18,
+            legendSpacing = 4,
+            legendHeight = legendRectSize + legendSpacing,
+            offset = legendHeight * legendData.length / 2,
+            left = height / 2 + 10;
+        
+        var legend = svg.selectAll('.legend')
+            .data(legendData)
+            .enter()
+            .append('g')
+            .attr('class', 'legend')
+            .attr('transform', function(d, i) {
+                var top = i * legendHeight - offset;
+                return 'translate(' + left + ',' + top + ')';
+        });
+
+        var g = svg.selectAll('.arc')
+            .data(pie(data))
+            .enter().append('g')
+            .attr('class', 'arc');
+
+        g.append('path')
+            .attr('d', arc)
+            .style('fill', function(d) { return slice_color(d.data.key); })
+            .append('title')
+            .text(function(d) { return d.data.key + ': ' + d.value; });
+
+        legend.append('rect')
+            .attr('width', legendRectSize)
+            .attr('height', legendRectSize)
+            .style('fill', function(d) { return slice_color(d.key); });
+
+        legend.append('text')
+            .attr('x', legendRectSize + legendSpacing)
+            .attr('y', legendRectSize - legendSpacing)
+            .text(function(d) { return d.key; });
+    });
+</script>
