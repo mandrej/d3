@@ -1,0 +1,133 @@
+{
+	"name": "Арсеније",
+	"born": "",
+	"died": 1842,
+	"location": "Крагујевац",
+	"parents": [
+		{
+			"name": "Димитрије",
+			"born": "",
+			"died": "",
+			"location": "Београд",
+			"parents": [
+				{
+					"name": "Јован",
+					"spouse": "Aна",
+					"born": "",
+					"died": "",
+					"location": "Београд",
+					"parents": [
+						{
+							"name": "Милан",
+							"born": "",
+							"died": "",
+							"location": ""
+						},
+						{
+							"name": "Стефан",
+							"born": "",
+							"died": "",
+							"location": ""
+						},
+						{
+							"name": "Добривоје",
+							"spouse": "Наталија",
+							"born": "",
+							"died": 1934,
+							"location": "Београд",
+							"parents": [
+								{
+									"name": "Велибор",
+									"spouse": "Марица",
+									"born": 1893,
+									"died": 1965,
+									"location": "Јагодина",
+									"parents": [
+										{
+											"name": "Добривоје",
+											"spouse": "Олга",
+											"born": 1924,
+											"died": 1998,
+											"location": "Београд",
+											"parents": [
+												{
+													"name": "Милан",
+													"spouse": "Светлана",
+													"born": 1954,
+													"died": "",
+													"location": "Београд",
+													"parents": [
+														{
+															"name": "Ана",
+															"spouse": "Милош",
+															"born": 1981,
+															"died": "",
+															"location": "Београд",
+															"parents": [
+																{
+																	"name": "Ива",
+																	"born": 2010,
+																	"died": "",
+																	"location": "Београд"
+																},
+																{
+																	"name": "Маша",
+																	"born": 2012,
+																	"died": "",
+																	"location": "Београд"
+																}
+															]
+														},
+														{
+															"name": "Михаило",
+															"spouse": "Катарина",
+															"born": 1986,
+															"died": "",
+															"location": "Београд",
+															"parents": [
+																{
+																	"name": "Ђорђе",
+																	"born": 2013,
+																	"died": "",
+																	"location": "Београд"
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "Босиљка",
+									"born": "",
+									"died": "",
+									"location": "Београд"
+								},
+								{
+									"name": "Љубинка",
+									"born": "",
+									"died": "",
+									"location": "Београд"
+								},
+								{
+									"name": "Јела",
+									"born": "",
+									"died": "",
+									"location": "Београд"
+								},
+								{
+									"name": "Радослав",
+									"born": 1906,
+									"died": 1980,
+									"location": "Београд"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
