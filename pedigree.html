@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-text { font-family: "Helvetica Neue", Helvetica, sans-serif; }
-rect { fill: bisque; stroke: #000; }
-.name, .spouse { font-weight: bold; }
-.spouse { fill: #444; }
-.about { font-size: smaller; }
-.link {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
+    text { font-family: "Helvetica Neue", Helvetica, sans-serif; }
+    rect { fill: none; stroke: #000; }
+    .name, .spouse { font-weight: bold; text-anchor: middle; }
+    .spouse { fill: #444; }
+    .about { font-size: smaller; text-anchor: middle; }
+    .link {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
 </style>
 <body>
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
-
 var margin = {top: 50, right: 0, bottom: 50, left: 0},
     width = 1200 - margin.left - margin.right,
     height = 900 - margin.top - margin.bottom;
@@ -62,28 +61,25 @@ d3.json("data/tree.json", function(error, json) {
     node.append("rect")
         .attr("width", box_width)
         .attr("height", box_height)
-        .attr("x", function(d) { console.log(d.x); return d.x - box_width / 2; })
+        .attr("x", function(d) { return d.x - box_width / 2; })
         .attr("y", function(d) { return height - d.y - box_height / 2; });
 
     node.append("text")
         .attr("class", "name")
         .attr("x", function(d) { return d.x; })
-        .attr("y", function(d) { return height - d.y - 16; })
-        .style("text-anchor", "middle")
+        .attr("y", function(d) { return height - d.y - 15; })
         .text(function(d) { return d.name; });
 
     node.append("text")
         .attr("class", "spouse")
         .attr("x", function(d) { return d.x; })
         .attr("y", function(d) { return height - d.y + 5; })
-        .style("text-anchor", "middle")
         .text(function(d) { return (d.spouse)? d.spouse: ''; });
 
     node.append("text")
         .attr("class", "about")
         .attr("x", function(d) { return d.x; })
         .attr("y", function(d) { return height - d.y + 24; })
-        .style("text-anchor", "middle")
         .text(about);
 
     var link = svg.selectAll(".link")
@@ -94,10 +90,10 @@ d3.json("data/tree.json", function(error, json) {
         .attr("d", connect);
 
     function connect(d, i) {
-        return "M" + d.source.x + "," + (height - d.source.y)
+        return "M" + d.source.x + "," + (height - d.source.y - box_height / 2)
              + "V" + (height - (d.source.y + d.target.y) / 2)
              + "H" + d.target.x
-             + "V" + (height - d.target.y);
+             + "V" + (height - d.target.y + box_height / 2);
     };
 
     function about(d, i) {
@@ -105,11 +101,9 @@ d3.json("data/tree.json", function(error, json) {
             return d.location + ' ' + d.born + "–" + d.died;
         } else if (d.died) {
             return d.location + ' ' + d.died;
-        } else {
-            return d.location
         }
+        return d.location
     }
 });
-
 </script>
 </body>
