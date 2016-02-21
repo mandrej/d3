@@ -21,13 +21,13 @@
 							"name": "Милан",
 							"born": "",
 							"died": "",
-							"location": ""
+							"location": "Београд"
 						},
 						{
 							"name": "Стефан",
 							"born": "",
 							"died": "",
-							"location": ""
+							"location": "Београд"
 						},
 						{
 							"name": "Добривоје",
@@ -41,7 +41,7 @@
 									"spouse": "Марица",
 									"born": 1893,
 									"died": 1965,
-									"location": "Јагодина",
+									"location": "Београд",
 									"parents": [
 										{
 											"name": "Добривоје",
@@ -113,6 +113,7 @@
 								},
 								{
 									"name": "Јела",
+									"spouse": "Велизар",
 									"born": "",
 									"died": "",
 									"location": "Београд"
@@ -121,7 +122,44 @@
 									"name": "Радослав",
 									"born": 1906,
 									"died": 1980,
-									"location": "Београд"
+									"location": "Београд",
+									"parents": [
+										{
+											"name": "Предраг",
+											"spouse": "Зорица",
+											"born": "",
+											"died": "",
+											"location": "Београд"
+										},
+										{
+											"name": "Ивана",
+											"born": "",
+											"died": "",
+											"location": "Београд"
+										},
+										{
+											"name": "Зоран",
+											"spouse": "Славенка",
+											"born": 1947,
+											"died": "",
+											"location": "Београд",
+											"parents": [
+												{
+													"name": "Вук",
+													"spouse": "Ивана",
+													"born": 1975,
+													"died": "",
+													"location": "Београд"
+												},
+												{
+													"name": "Урош",
+													"born": 1980,
+													"died": "",
+													"location": "Београд"
+												}
+											]
+										}
+									]
 								}
 							]
 						}

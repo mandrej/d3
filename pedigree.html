@@ -2,12 +2,10 @@
 <meta charset="utf-8">
 <style>
 text { font-family: "Helvetica Neue", Helvetica, sans-serif; }
-rect { fill: none; stroke: #000; }
-.name { font-weight: bold; }
-.about {
-    fill: #444;
-    font-size: smaller;
-}
+rect { fill: bisque; stroke: #000; }
+.name, .spouse { font-weight: bold; }
+.spouse { fill: #444; }
+.about { font-size: smaller; }
 .link {
     fill: none;
     stroke: #000;
@@ -54,7 +52,7 @@ d3.json("data/tree.json", function(error, json) {
     var depth = getDepth(json);
     var gap_height = 20;
     var box_height = (height - gap_height * depth + gap_height) / depth;
-    var box_width = 160;
+    var box_width = 140;
 
     var node = svg.selectAll(".node")
         .data(nodes)
@@ -72,29 +70,27 @@ d3.json("data/tree.json", function(error, json) {
         .attr("x", function(d) { return d.x; })
         .attr("y", function(d) { return height - d.y - 16; })
         .style("text-anchor", "middle")
-        .text(function(d) { return (d.spouse)? d.name + ' ' + d.spouse: d.name; });
+        .text(function(d) { return d.name; });
 
     node.append("text")
-        .attr("class", "about")
+        .attr("class", "spouse")
         .attr("x", function(d) { return d.x; })
-        .attr("y", function(d) { return height - d.y + 4; })
+        .attr("y", function(d) { return height - d.y + 5; })
         .style("text-anchor", "middle")
-        .text(function(d) { return (d.born)? d.born + "–" + d.died: (d.died)? d.died: ''; });
+        .text(function(d) { return (d.spouse)? d.spouse: ''; });
 
     node.append("text")
         .attr("class", "about")
         .attr("x", function(d) { return d.x; })
         .attr("y", function(d) { return height - d.y + 24; })
         .style("text-anchor", "middle")
-        .text(function(d) { return d.location; });
+        .text(about);
 
     var link = svg.selectAll(".link")
         .data(tree.links(nodes))
         .enter()
         .insert("path", "g")
-        .attr("fill", "none")
-        .attr("stroke", "#000")
-        .attr("shape-rendering", "crispEdges")
+        .attr("class", "link")
         .attr("d", connect);
 
     function connect(d, i) {
@@ -104,6 +100,15 @@ d3.json("data/tree.json", function(error, json) {
              + "V" + (height - d.target.y);
     };
 
+    function about(d, i) {
+        if (d.born) {
+            return d.location + ' ' + d.born + "–" + d.died;
+        } else if (d.died) {
+            return d.location + ' ' + d.died;
+        } else {
+            return d.location
+        }
+    }
 });
 
 </script>
