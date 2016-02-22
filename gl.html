@@ -51,7 +51,9 @@
     */
 
     queue()
-        .defer(d3.csv, "data/area.csv")
+        .defer(d3.csv, "data/area.csv", function(d) {
+            return {name: d.area, description: d.name}
+        })
         .defer(d3.csv, "data/pu_area_do_area.csv", function (d) {
             return {key: d.pu_area + ':' + d.do_area, value: +d.count};
         })
@@ -68,7 +70,7 @@
         for (var j = 0; j < area.length; j++) {
             matrix[j] = [];
             for (var k = 0; k < area.length; k++) {
-                var found = tmp.get(area[j].area + ':' + area[k].area);
+                var found = tmp.get(area[j].name + ':' + area[k].name);
                 if (found === undefined) {
                     matrix[j][k] = 0;
                 } else {
@@ -88,7 +90,7 @@
 
         // Add a mouseover title.
         group.append("title").text(function (d, i) {
-            return area[i].name + ": " + formatPercent(d.value) + " of origins";
+            return area[i].description + ": " + formatPercent(d.value) + " of origins";
         });
 
         // Add the group arc.
@@ -108,7 +110,7 @@
                 return "#group" + i;
             })
             .text(function (d, i) {
-                return area[i].name;
+                return area[i].description;
             });
 
         // Remove the labels that don't fit. :(
@@ -128,11 +130,11 @@
 
         // Add an elaborate mouseover title for each chord.
         chord.append("title").text(function (d) {
-            return area[d.source.index].name
-                + " → " + area[d.target.index].name
+            return area[d.source.index].description 
+                + " → " + area[d.target.index].description
                 + ": " + formatPercent(d.source.value)
-                + "\n" + area[d.target.index].name
-                + " → " + area[d.source.index].name
+                + "\n" + area[d.target.index].description
+                + " → " + area[d.source.index].description
                 + ": " + formatPercent(d.target.value);
         });
 
