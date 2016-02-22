@@ -21,7 +21,7 @@ var margin = {top: 50, right: 0, bottom: 50, left: 0},
 
 var tree = d3.layout.tree()
     .separation(function(a, b) { return a.parent === b.parent ? 1 : 1.2; })
-    .children(function(d) { return d.parents; })
+    .children(function(d) { return d.children; })
     .size([width, height]);
 
 var svg = d3.select("body")
@@ -33,8 +33,8 @@ var svg = d3.select("body")
 
 var getDepth = function (obj) {
     var depth = 0;
-    if (obj.parents) {
-        obj.parents.forEach(function (d) {
+    if (obj.children) {
+        obj.children.forEach(function (d) {
             var tmpDepth = getDepth(d)
             if (tmpDepth > depth) {
                 depth = tmpDepth;

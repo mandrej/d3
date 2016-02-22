@@ -3,20 +3,20 @@
 	"born": "",
 	"died": 1842,
 	"location": "Крагујевац",
-	"parents": [
+	"children": [
 		{
 			"name": "Димитрије",
 			"born": "",
 			"died": "",
 			"location": "Београд",
-			"parents": [
+			"children": [
 				{
 					"name": "Јован",
 					"spouse": "Aна",
 					"born": "",
 					"died": "",
 					"location": "Београд",
-					"parents": [
+					"children": [
 						{
 							"name": "Милан",
 							"born": "",
@@ -35,35 +35,35 @@
 							"born": "",
 							"died": 1934,
 							"location": "Београд",
-							"parents": [
+							"children": [
 								{
 									"name": "Велибор",
 									"spouse": "Марица",
 									"born": 1893,
 									"died": 1965,
 									"location": "Београд",
-									"parents": [
+									"children": [
 										{
 											"name": "Добривоје",
 											"spouse": "Олга",
 											"born": 1924,
 											"died": 1998,
 											"location": "Београд",
-											"parents": [
+											"children": [
 												{
 													"name": "Милан",
 													"spouse": "Светлана",
 													"born": 1954,
 													"died": "",
 													"location": "Београд",
-													"parents": [
+													"children": [
 														{
 															"name": "Ана",
 															"spouse": "Милош",
 															"born": 1981,
 															"died": "",
 															"location": "Београд",
-															"parents": [
+															"children": [
 																{
 																	"name": "Ива",
 																	"born": 2010,
@@ -84,7 +84,7 @@
 															"born": 1986,
 															"died": "",
 															"location": "Београд",
-															"parents": [
+															"children": [
 																{
 																	"name": "Ђорђе",
 																	"born": 2013,
@@ -124,7 +124,7 @@
 									"born": 1906,
 									"died": 1980,
 									"location": "Београд",
-									"parents": [
+									"children": [
 										{
 											"name": "Предраг",
 											"spouse": "Зорица",
@@ -144,7 +144,7 @@
 											"born": 1947,
 											"died": "",
 											"location": "Београд",
-											"parents": [
+											"children": [
 												{
 													"name": "Вук",
 													"spouse": "Ивана",
