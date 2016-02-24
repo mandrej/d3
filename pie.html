@@ -23,7 +23,7 @@
         width = 540; //parseInt(styles.width),
         height = 250; //parseInt(styles.height),
         radius = height / 2;
-    
+
     var colors = [
         {name: 'red', hex: '#c00'},
         {name: 'orange', hex: '#f90'},
@@ -35,7 +35,7 @@
         {name: 'medium', hex: '#555'},
         {name: 'light', hex: '#ccc'}
     ];
-    
+
     var key = 'Photo_tags';
     var field = key.split('_').pop();
     var slice_color = d3.scale.category20();
@@ -54,14 +54,14 @@
             .sort(function(a, b) { return b.value - a.value; })
             .slice(0, 11);
         console.log(JSON.stringify(data));
-        
+
         var arc = d3.svg.arc()
             .outerRadius(radius)
             .innerRadius(radius/2);
 
         var pie = d3.layout.pie()
             .value(function(d) { return d.value; });
-        
+
         var svg = d3.select('#chart').append('svg')
             .attr('width', width)
             .attr('height', height)
@@ -74,7 +74,7 @@
             legendHeight = legendRectSize + legendSpacing,
             offset = legendHeight * legendData.length / 2,
             left = height / 2 + 10;
-        
+
         var legend = svg.selectAll('.legend')
             .data(legendData)
             .enter()
@@ -107,3 +107,4 @@
             .text(function(d) { return d.key; });
     });
 </script>
+</body>
