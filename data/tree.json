@@ -1,0 +1,57 @@
+{
+    "name": "COMMISSIONS",
+    "children": [
+        {
+            "name": "DRIVER",
+            "children": [
+                {
+                    "name": "ALL_ENTITIES",
+                    "children": [
+                        {
+                            "name": "ALL_CAR_CLASSES",
+                            "children": [
+                                {
+                                    "name": "PROMOCODE_DISCOUNT"
+                                },
+                                {
+                                    "name": "TOLLS_CHARGE"
+                                },
+                                {
+                                    "name": "BASE_CHARGE"
+                                },
+                                {
+                                    "name": "GROUP_DISCOUNT"
+                                },
+                                {
+                                    "name": "ACCOUNT_CHARGE"
+                                },
+                                {
+                                    "name": "WEB_DISCOUNT"
+                                },
+                                {
+                                    "name": "ROUNDTRIP_CHARGE"
+                                },
+                                {
+                                    "name": "SERVICE_CHARGE"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "AFFILIATE",
+            "children": [
+                {
+                    "name": "ALL_ENTITIES",
+                    "children": [
+                        {
+                            "name": "ALL_CAR_CLASSES"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
