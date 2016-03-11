@@ -25,6 +25,7 @@
 </style>
 <body>
 <script src="//d3js.org/d3.v3.min.js"></script>
+<script src="jpp.js"></script>
 <script>
 
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
@@ -47,32 +48,45 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var root = {
+var commissions = {
     name: "COMMISSIONS",
     children: []
-}
+};
 
-function scan(obj) {
-    var k;
-    if (obj instanceof Object) {
-        for (k in obj) {
-            if (obj.hasOwnProperty(k)) {
-                root.children.push({name: k})
-                scan(obj[k]);
-            }
-        }
-    } else {
-        // console.log(obj);
-        // body += 'found value : ' + obj + '<br/>';
-    };
-}
+var jpp = JsonPathProcessor;
 
-d3.json("data/commissions0.json", function(error, commissions) {
+d3.json("data/definitions.json", function(error, definitions) {
   if (error) throw error;
 
+  definitions.forEach(function(rec, k) {
+      console.log(rec.id);
+      var found = jpp(commissions).find('children') || -1;
+      jpp(commissions).set('children.' + (found + 1), {name: rec.entity_type}, true);
+    //   jpp(commissions).set('children', {
+    //       name: rec.entity_type,
+    //       children: [
+    //           {
+    //               name: rec.entity_id,
+    //               children: [
+    //                   {
+    //                       name: rec.car_class,
+    //                       children: [
+    //                           {
+    //                               name: rec.charge,
+    //                               value: rec.formula
+    //                           }
+    //                       ]
+    //                   }
+    //               ]
+    //           }
+    //       ]
+    //   }, true);
+  });
+
+  console.log(commissions);
 
 
-  // root = commissions;
+  root = commissions;
   // root.x0 = height / 2;
   // root.y0 = 0;
   //
