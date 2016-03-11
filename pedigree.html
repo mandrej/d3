@@ -44,7 +44,7 @@ var getDepth = function (obj) {
     return 1 + depth;
 }
 
-d3.json("data/tree.json", function(error, json) {
+d3.json("data/pedigree.json", function(error, json) {
     if (error) throw error;
 
     var nodes = tree.nodes(json);
