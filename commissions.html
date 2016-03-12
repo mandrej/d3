@@ -22,18 +22,11 @@
 <body>
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script>
-        var margin = {
-                top: 20,
-                right: 120,
-                bottom: 20,
-                left: 120
-            },
+        var margin = {top: 20, right: 120, bottom: 20, left: 120},
             width = 1200 - margin.right - margin.left,
             height = 800 - margin.top - margin.bottom;
 
-        var i = 0,
-            duration = 750,
-            root;
+        var i = 0, duration = 750, root;
 
         var tree = d3.layout.tree()
             .children(function(d) {return d.values;})
@@ -63,8 +56,6 @@
                     .entries(definitions)
             };
 
-            console.log(root);
-
             root.x0 = height / 2;
             root.y0 = 0;
 
@@ -79,8 +70,6 @@
             root.values.forEach(collapse);
             update(root);
         });
-
-        d3.select(self.frameElement).style("height", "800px");
 
         function update(source) {
             // Compute the new tree layout.
@@ -204,7 +193,6 @@
 
         // Toggle children on click.
         function click(d) {
-            console.log(d);
             if (d.values) {
                 d._children = d.values;
                 d.values = null;
