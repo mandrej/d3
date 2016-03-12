@@ -5,16 +5,17 @@
         cursor: pointer;
     }
     .node circle {
-        fill: #fff;
-        stroke: steelblue;
+        fill: white;
+        stroke: orange;
         stroke-width: 1.5px;
     }
     .node text {
-        font: 10px sans-serif;
+        color: black;
+        font: 12px sans-serif;
     }
     .link {
         fill: none;
-        stroke: #ccc;
+        stroke: lightgrey;
         stroke-width: 1.5px;
     }
 </style>
@@ -23,13 +24,13 @@
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script>
         var margin = {top: 20, right: 120, bottom: 20, left: 120},
-            width = 1200 - margin.right - margin.left,
-            height = 800 - margin.top - margin.bottom;
+            width = 1840 - margin.right - margin.left,
+            height = 900 - margin.top - margin.bottom;
 
         var i = 0, duration = 750, root;
 
         var tree = d3.layout.tree()
-            .children(function(d) {return d.values;})
+            .children(function(d) {return d.values || d.rules;})
             .size([height, width]);
 
         var diagonal = d3.svg.diagonal()
@@ -47,14 +48,17 @@
             if (error) throw error;
 
             root = {
-                key: "COMMISSIONS",
+                key: 'COMMISSIONS',
                 values: d3.nest()
                     .key(function(d) {return d.entity_type;})
                     .key(function(d) {return d.entity_id;})
                     .key(function(d) {return d.car_class;})
+                    .key(function(d) {return d.configuration_level;})
                     .key(function(d) {return d.charge;})
                     .entries(definitions)
             };
+
+            console.log(root);
 
             root.x0 = height / 2;
             root.y0 = 0;
@@ -65,11 +69,33 @@
                     d._children.forEach(collapse);
                     d.values = null;
                 }
+                if (d.rules) {
+                    d._children = d.rules;
+                    d._children.forEach(collapse);
+                    d.rules = null;
+                }
             }
 
             root.values.forEach(collapse);
             update(root);
         });
+
+        function info(d) {
+            if (d.key) return d.key;
+            if (d.formula) return d.formula;
+            if (d.name == 'valid_for_ride_from' || d.name == 'valid_for_ride_until') {
+                console.log(d.value);
+                return d.name + ': ' + new Date(1 * d.value);
+            } else if (d.name == 'pickup_position' || d.name == 'dropoff_position') {
+                if (d.value == '0') {
+                    return d.name + ': MATCH EVERYTHING';
+                } else {
+                    return d.name + ': ' + d.value;
+                }
+            } else {
+                return d.name + ': ' + d.value;
+            }
+        }
 
         function update(source) {
             // Compute the new tree layout.
@@ -98,20 +124,18 @@
             nodeEnter.append("circle")
                 .attr("r", 1e-6)
                 .style("fill", function(d) {
-                    return d._children ? "lightsteelblue" : "#fff";
+                    return d._children ? "orange" : "white";
                 });
 
             nodeEnter.append("text")
                 .attr("x", function(d) {
-                    return d.values || d._children ? -10 : 10;
+                    return d.values || d.rules || d._children ? -15 : 15;
                 })
                 .attr("dy", ".35em")
                 .attr("text-anchor", function(d) {
-                    return d.values || d._children ? "end" : "start";
+                    return d.values || d.rules || d._children ? "end" : "start";
                 })
-                .text(function(d) {
-                    return d.key || d.formula;
-                })
+                .text(info)
                 .style("fill-opacity", 1e-6);
 
             // Transition nodes to their new position.
@@ -122,9 +146,9 @@
                 });
 
             nodeUpdate.select("circle")
-                .attr("r", 4.5)
+                .attr("r", 10)
                 .style("fill", function(d) {
-                    return d._children ? "lightsteelblue" : "#fff";
+                    return d._children ? "orange" : "white";
                 });
 
             nodeUpdate.select("text")
@@ -200,6 +224,13 @@
                 d.values = d._children;
                 d._children = null;
             }
+            // if (d.formula) {
+            //     d._children = d.rules
+            //     d.rules = null
+            // } else {
+            //     d.rules = d._children
+            //     d._children = null
+            // }
             update(d);
         }
     </script>
