@@ -30,6 +30,8 @@
 
         var tree = d3.layout.tree()
             .children(function(d) {return d.values || d.rules;})
+//            .sort(function(a, b) {return b.sequence_number - a.sequence_number;})
+//            .separation(function(a, b) {return (a.parent == b.parent ? 1 : 1.5) / a.depth;})
             .size([height, width]);
 
         var diagonal = d3.svg.diagonal()
