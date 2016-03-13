@@ -2293,7 +2293,7 @@
         "entity_type": "DRIVER",
         "entity_id": "567",
         "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value*0.8",
+        "formula": "$value * 0.80",
         "configuration_level": "PARTNER",
         "sequence_number": 102
     },

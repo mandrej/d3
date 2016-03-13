@@ -30,7 +30,6 @@
 
         var tree = d3.layout.tree()
             .children(function(d) {return d.values || d.rules;})
-//            .sort(function(a, b) {return b.sequence_number - a.sequence_number;})
 //            .separation(function(a, b) {return (a.parent == b.parent ? 1 : 1.5) / a.depth;})
             .size([height, width]);
 
@@ -48,6 +47,22 @@
         d3.json("data/definitions.json", function(error, definitions) {
             if (error) throw error;
 
+//            var positions = d3.set();
+//            d3.map(definitions).forEach(function(i, rec) {
+//                d3.map(rec.rules).forEach(function(j, rule) {
+//                    if (rule.name == 'pickup_position' || rule.name == 'dropoff_position') {
+//                        positions.add(rule.value);
+//                    }
+//                })
+//            });
+//            console.log(positions.values());
+//
+//            var formulas = d3.set();
+//            d3.map(definitions).forEach(function(i, rec) {
+//                formulas.add(rec.formula.replace(/\s/g, ''));
+//            });
+//            console.log(formulas.values());
+
             root = {
                 key: 'COMMISSIONS',
                 values: d3.nest()
@@ -56,6 +71,10 @@
                     .key(function(d) {return d.car_class;})
                     .key(function(d) {return d.configuration_level;})
                     .key(function(d) {return d.charge;})
+                    .sortKeys(d3.ascending)
+                    .sortValues(function(a, b) {
+                        return b.sequence_number - a.sequence_number;}
+                     )
                     .entries(definitions)
             };
 
@@ -127,6 +146,10 @@
                     return d._children ? "orange" : "white";
                 });
 
+//            var nodeLink = nodeEnter.append("a")
+//                .attr("xlink:href", function(d) {return d.formula ? d.id : null;})
+//
+//            nodeLink.append("text")
             nodeEnter.append("text")
                 .attr("x", function(d) {
                     return d.values || d.rules || d._children ? -12 : 12;
