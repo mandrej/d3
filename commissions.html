@@ -2,20 +2,22 @@
 <meta charset="utf-8">
 <style>
     body { margin: 0; padding: 0; }
+    text {
+        font: 12px sans-serif;
+    }
     .node { cursor: pointer; }
     .node circle {
         fill: white;
         stroke: orange;
         stroke-width: 1.5px;
     }
-    .node text {
-        color: black;
-        font: 12px sans-serif;
-    }
     .link {
         fill: none;
         stroke: #d3d3d3;
         stroke-width: 1.5px;
+    }
+    .form_link[href] text {
+        fill: red;
     }
 </style>
 
@@ -30,7 +32,6 @@
 
         var tree = d3.layout.tree()
             .children(function(d) {return d.values || d.rules;})
-//            .separation(function(a, b) {return (a.parent == b.parent ? 1 : 1.5) / a.depth;})
             .size([height, width]);
 
         var diagonal = d3.svg.diagonal()
@@ -44,11 +45,15 @@
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+        var order = ["BASE_CHARGE", "ROUNDTRIP_CHARGE", "ACCOUNT_CHARGE", "PROMOCODE_DISCOUNT", "GROUP_DISCOUNT", "WEB_DISCOUNT", "STOPS_CHARGE", "WAITINGTIME_CHARGE", "PICKUP_CHARGE", "SERVICE_CHARGE", "TOLLS_CHARGE", "PARKING_CHARGE", "BABYSEATS_CHARGE", "MISCELLANEOUS_CHARGE", "VOUCHER_CHARGE"];
+
         d3.json("data/definitions.json", function(error, definitions) {
             if (error) throw error;
 
-//            var positions = d3.set();
+//            var positions = d3.set(),
+//                formulas = d3.set();
 //            d3.map(definitions).forEach(function(i, rec) {
+//                formulas.add(rec.formula.replace(/\s/g, ''));
 //                d3.map(rec.rules).forEach(function(j, rule) {
 //                    if (rule.name == 'pickup_position' || rule.name == 'dropoff_position') {
 //                        positions.add(rule.value);
@@ -56,25 +61,26 @@
 //                })
 //            });
 //            console.log(positions.values());
-//
-//            var formulas = d3.set();
-//            d3.map(definitions).forEach(function(i, rec) {
-//                formulas.add(rec.formula.replace(/\s/g, ''));
-//            });
 //            console.log(formulas.values());
 
             root = {
                 key: 'COMMISSIONS',
                 values: d3.nest()
                     .key(function(d) {return d.entity_type;})
-                    .key(function(d) {return d.entity_id;})
-                    .key(function(d) {return d.car_class;})
-                    .key(function(d) {return d.configuration_level;})
+                    .sortKeys(d3.ascending)
                     .key(function(d) {return d.charge;})
+                    .sortKeys(function(a, b) {
+                        return order.indexOf(a) - order.indexOf(b);
+                    })
+                    .key(function(d) {return d.entity_id;})
+                    .sortKeys(d3.ascending)
+                    .key(function(d) {return d.car_class;})
+                    .sortKeys(d3.ascending)
+                    .key(function(d) {return d.configuration_level;})
                     .sortKeys(d3.ascending)
                     .sortValues(function(a, b) {
-                        return b.sequence_number - a.sequence_number;}
-                     )
+                        return b.sequence_number - a.sequence_number;
+                    })
                     .entries(definitions)
             };
 
@@ -89,11 +95,11 @@
                     d._children.forEach(collapse);
                     d.values = null;
                 }
-                if (d.rules) {
-                    d._children = d.rules;
-                    d._children.forEach(collapse);
-                    d.rules = null;
-                }
+//                if (d.rules) {
+//                    d._children = d.rules;
+//                    d._children.forEach(collapse);
+//                    d.rules = null;
+//                }
             }
 
             root.values.forEach(collapse);
@@ -146,11 +152,11 @@
                     return d._children ? "orange" : "white";
                 });
 
-//            var nodeLink = nodeEnter.append("a")
-//                .attr("xlink:href", function(d) {return d.formula ? d.id : null;})
-//
-//            nodeLink.append("text")
-            nodeEnter.append("text")
+            var formLink = nodeEnter.append("a")
+                .attr("class", "form_link")
+                .attr("xlink:href", function(d) {return d.formula ? '#' + d.id : null;});
+
+            formLink.append("text")
                 .attr("x", function(d) {
                     return d.values || d.rules || d._children ? -12 : 12;
                 })
