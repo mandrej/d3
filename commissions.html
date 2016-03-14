@@ -3,6 +3,7 @@
 <style>
     body { margin: 0; padding: 0; }
     text {
+        fill: black;
         font: 12px sans-serif;
     }
     .node { cursor: pointer; }
@@ -15,9 +16,6 @@
         fill: none;
         stroke: #d3d3d3;
         stroke-width: 1.5px;
-    }
-    .form_link[href] text {
-        fill: red;
     }
 </style>
 
@@ -45,7 +43,20 @@
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        var order = ["BASE_CHARGE", "ROUNDTRIP_CHARGE", "ACCOUNT_CHARGE", "PROMOCODE_DISCOUNT", "GROUP_DISCOUNT", "WEB_DISCOUNT", "STOPS_CHARGE", "WAITINGTIME_CHARGE", "PICKUP_CHARGE", "SERVICE_CHARGE", "TOLLS_CHARGE", "PARKING_CHARGE", "BABYSEATS_CHARGE", "MISCELLANEOUS_CHARGE", "VOUCHER_CHARGE"];
+        var charges = ["BASE_CHARGE", "ROUNDTRIP_CHARGE", "ACCOUNT_CHARGE", "PROMOCODE_DISCOUNT", "GROUP_DISCOUNT", "WEB_DISCOUNT", "STOPS_CHARGE", "WAITINGTIME_CHARGE", "PICKUP_CHARGE", "SERVICE_CHARGE", "TOLLS_CHARGE", "PARKING_CHARGE", "BABYSEATS_CHARGE", "MISCELLANEOUS_CHARGE", "VOUCHER_CHARGE"];
+        function orderCharges(a, b) {
+            return charges.indexOf(a) - charges.indexOf(b)
+        }
+        function orderALLlast(a, b) {
+            var x = a.startsWith('ALL_') ? 1 : 0;
+            var y = b.startsWith('ALL_') ? 1 : 0;
+            return x - y;
+        }
+        function orderDEFAULTlast(a, b) {
+            var x = a == 'DEFAULT' ? 1 : 0;
+            var y = b == 'DEFAULT' ? 1 : 0;
+            return x - y;
+        }
 
         d3.json("data/definitions.json", function(error, definitions) {
             if (error) throw error;
@@ -69,15 +80,13 @@
                     .key(function(d) {return d.entity_type;})
                     .sortKeys(d3.ascending)
                     .key(function(d) {return d.charge;})
-                    .sortKeys(function(a, b) {
-                        return order.indexOf(a) - order.indexOf(b);
-                    })
+                    .sortKeys(orderCharges)
                     .key(function(d) {return d.entity_id;})
-                    .sortKeys(d3.ascending)
+                    .sortKeys(orderALLlast)
                     .key(function(d) {return d.car_class;})
-                    .sortKeys(d3.ascending)
+                    .sortKeys(orderALLlast)
                     .key(function(d) {return d.configuration_level;})
-                    .sortKeys(d3.ascending)
+                    .sortKeys(orderDEFAULTlast)
                     .sortValues(function(a, b) {
                         return b.sequence_number - a.sequence_number;
                     })
@@ -108,14 +117,23 @@
 
         function info(d) {
             if (d.key) return d.key;
-            if (d.formula) return '[' + d.id + '] ' + d.formula;
+            if (d.formula) return d.id + ' [' + d.formula + ']';
             if (d.name == 'valid_for_ride_from' || d.name == 'valid_for_ride_until') {
                 return d.name + ': ' + new Date(1 * d.value);
             } else if (d.name == 'pickup_position' || d.name == 'dropoff_position') {
-                if (d.value == '0') {
-                    return d.name + ': MATCH EVERYTHING';
-                } else {
-                    return d.name + ': ' + d.value;
+                switch (d.value) {
+                    case '0':
+                        return d.name + ': MATCH EVERYTHING';
+//                    case '1':
+//                        return d.name + ': MATCH';
+//                    case '2352':
+//                        return d.name + ': MATCH';
+//                    case '9851':
+//                        return d.name + ': MATCH';
+//                    case '12736':
+//                        return d.name + ': MATCH';
+                    default:
+                        return d.name + ': ' + d.value;
                 }
             } else {
                 return d.name + ': ' + d.value;
@@ -153,7 +171,6 @@
                 });
 
             var formLink = nodeEnter.append("a")
-                .attr("class", "form_link")
                 .attr("xlink:href", function(d) {return d.formula ? '#' + d.id : null;});
 
             formLink.append("text")
@@ -181,7 +198,11 @@
                 });
 
             nodeUpdate.select("text")
-                .style("fill-opacity", 1);
+                .style("fill-opacity", 1)
+                .style("font-weight", "bold")
+                .style("fill", function(d){
+                    return d.formula ? "#33f" : "black"
+            });
 
             // Transition exiting nodes to the parent's new position.
             var nodeExit = node.exit().transition()
