@@ -27,6 +27,7 @@
             height = 960 - margin.top - margin.bottom;
 
         var i = 1000, duration = 750, root;
+        var format = d3.time.format("%a, %b %e %I:%M%p %Y");
 
         var tree = d3.layout.tree()
             .children(function(d) {return d.values || d.rules;})
@@ -74,6 +75,8 @@
 //            console.log(positions.values());
 //            console.log(formulas.values());
 
+//            var new_list_of_objects = _.map(original_list_of_objects, _.clone);
+
             root = {
                 key: 'COMMISSIONS',
                 values: d3.nest()
@@ -90,10 +93,11 @@
                     .sortValues(function(a, b) {
                         return b.sequence_number - a.sequence_number;
                     })
+//                    .entries(definitions.filter(function(d) {return d.id == 157}))
                     .entries(definitions)
             };
 
-            // console.log(root);
+//            console.log(root);
 
             root.x0 = height / 2;
             root.y0 = 0;
@@ -119,21 +123,12 @@
             if (d.key) return d.key;
             if (d.formula) return d.id + ' [' + d.formula + ']';
             if (d.name == 'valid_for_ride_from' || d.name == 'valid_for_ride_until') {
-                return d.name + ': ' + new Date(1 * d.value);
+                return d.name + ': ' + format(new Date(1 * d.value));
             } else if (d.name == 'pickup_position' || d.name == 'dropoff_position') {
-                switch (d.value) {
-                    case '0':
-                        return d.name + ': MATCH EVERYTHING';
-//                    case '1':
-//                        return d.name + ': MATCH';
-//                    case '2352':
-//                        return d.name + ': MATCH';
-//                    case '9851':
-//                        return d.name + ': MATCH';
-//                    case '12736':
-//                        return d.name + ': MATCH';
-                    default:
-                        return d.name + ': ' + d.value;
+                if (d.value == '0') {
+                    return d.name + ': MATCH EVERYTHING';
+                } else {
+                    return d.name + ': ' + d.value;
                 }
             } else {
                 return d.name + ': ' + d.value;
@@ -170,10 +165,7 @@
                     return d._children ? "orange" : "white";
                 });
 
-            var formLink = nodeEnter.append("a")
-                .attr("xlink:href", function(d) {return d.formula ? '#' + d.id : null;});
-
-            formLink.append("text")
+            nodeEnter.append("text")
                 .attr("x", function(d) {
                     return d.values || d.rules || d._children ? -12 : 12;
                 })
