@@ -45,19 +45,27 @@
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         var charges = ["BASE_CHARGE", "ROUNDTRIP_CHARGE", "ACCOUNT_CHARGE", "PROMOCODE_DISCOUNT", "GROUP_DISCOUNT", "WEB_DISCOUNT", "STOPS_CHARGE", "WAITINGTIME_CHARGE", "PICKUP_CHARGE", "SERVICE_CHARGE", "TOLLS_CHARGE", "PARKING_CHARGE", "BABYSEATS_CHARGE", "MISCELLANEOUS_CHARGE", "VOUCHER_CHARGE"];
+		var levels = ["ACCOUNT", "PARTNER", "DEFAULT"];
+
         function orderCharges(a, b) {
-            return charges.indexOf(a) - charges.indexOf(b)
+            return charges.indexOf(a) - charges.indexOf(b);
+        }
+		function orderLevels(a, b) {
+            return levels.indexOf(a) - levels.indexOf(b)
         }
         function orderALLlast(a, b) {
-            var x = a.startsWith('ALL_') ? 1 : 0;
-            var y = b.startsWith('ALL_') ? 1 : 0;
+            var x = a.startsWith('ALL_') ? 100 : a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+            var y = b.startsWith('ALL_') ? 100 : a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
             return x - y;
         }
-        function orderDEFAULTlast(a, b) {
-            var x = a == 'DEFAULT' ? 1 : 0;
-            var y = b == 'DEFAULT' ? 1 : 0;
-            return x - y;
-        }
+
+		function collapse(d) {
+			if (d.values) {
+				d._children = d.values;
+				d._children.forEach(collapse);
+				d.values = null;
+			}
+		}
 
         d3.json("data/definitions.json", function(error, definitions) {
             if (error) throw error;
@@ -87,7 +95,7 @@
                     .key(function(d) {return d.car_class;})
                     .sortKeys(orderALLlast)
                     .key(function(d) {return d.configuration_level;})
-                    .sortKeys(orderDEFAULTlast)
+                    .sortKeys(orderLevels)
                     .sortValues(function(a, b) {
                         return b.sequence_number - a.sequence_number;
                     })
@@ -99,19 +107,6 @@
 
             root.x0 = height / 2;
             root.y0 = 0;
-
-            function collapse(d) {
-                if (d.values) {
-                    d._children = d.values;
-                    d._children.forEach(collapse);
-                    d.values = null;
-                }
-//                if (d.rules) {
-//                    d._children = d.rules;
-//                    d._children.forEach(collapse);
-//                    d.rules = null;
-//                }
-            }
 
             root.values.forEach(collapse);
             update(root);
@@ -225,6 +220,7 @@
             // Update the links…
             var link = svg.selectAll("path.link")
                 .data(links, function(d) {
+					console.log(d.target.id);
                     return d.target.id;
                 });
 
@@ -278,13 +274,15 @@
                 d.values = d._children;
                 d._children = null;
             }
-            // if (d.formula) {
-            //     d._children = d.rules
-            //     d.rules = null
-            // } else {
-            //     d.rules = d._children
-            //     d._children = null
-            // }
+//			http://stackoverflow.com/questions/19167890/d3-js-tree-layout-collapsing-other-nodes-when-expanding-one
+//			If the node has a parent, then collapse its child nodes except for this clicked node.
+//  			if (d.parent) {
+//    			d.parent.children.forEach(function(element) {
+//      				if (d !== element) {
+//        				collapse(element);
+//      				}
+//    			});
+//  			}
             update(d);
         }
     </script>

@@ -1,18 +1,18 @@
 [
     {
-        "id": 172,
-        "charge": "BABYSEATS_CHARGE",
+        "id": 200,
+        "charge": "WEB_DISCOUNT",
         "rules": [
             {
-                "id": 2341945,
+                "id": 2342008,
                 "name": "dropoff_position",
-                "value": "0",
+                "value": "12736",
                 "operator": "conjunction"
             },
             {
-                "id": 2341946,
+                "id": 2342009,
                 "name": "pickup_position",
-                "value": "0",
+                "value": "12736",
                 "operator": "conjunction"
             }
         ],
@@ -21,46 +21,70 @@
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 0.65",
         "configuration_level": "DEFAULT",
-        "sequence_number": 172
+        "sequence_number": 200
     },
     {
-        "id": 163,
-        "charge": "WAITINGTIME_CHARGE",
+        "id": 167,
+        "charge": "PARKING_CHARGE",
         "rules": [
             {
-                "id": 2341919,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341920,
-                "name": "valid_for_ride_until",
-                "value": "1483160400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341921,
-                "name": "valid_for_ride_from",
-                "value": "1421384400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341923,
-                "name": "valid_for_accounts",
-                "value": "V005",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341924,
+                "id": 2341936,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341922,
+                "id": 2341935,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 1.00",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 167
+    },
+    {
+        "id": 154,
+        "charge": "BASE_CHARGE",
+        "rules": [
+            {
+                "id": 2341870,
+                "name": "valid_for_ride_until",
+                "value": "1483160400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341865,
                 "name": "valid_for_asap_jobs",
                 "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341869,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341867,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341868,
+                "name": "valid_for_ride_from",
+                "value": "1421384400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341866,
+                "name": "valid_for_accounts",
+                "value": "V005",
                 "operator": "conjunction"
             }
         ],
@@ -69,291 +93,51 @@
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 0.77",
         "configuration_level": "ACCOUNT",
-        "sequence_number": 163
+        "sequence_number": 154
     },
     {
-        "id": 211,
-        "charge": "WEB_DISCOUNT",
-        "rules": [
-            {
-                "id": 2342030,
-                "name": "pickup_position",
-                "value": "12736",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342031,
-                "name": "dropoff_position",
-                "value": "12736",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "BD",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 211
-    },
-    {
-        "id": 117,
+        "id": 139,
         "charge": "BABYSEATS_CHARGE",
         "rules": [
             {
-                "id": 2341726,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341725,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 117
-    },
-    {
-        "id": 196,
-        "charge": "MISCELLANEOUS_CHARGE",
-        "rules": [
-            {
-                "id": 2342001,
-                "name": "valid_for_asap_jobs",
+                "id": 2341787,
+                "name": "valid_for_canceled_reservation",
                 "value": "true",
                 "operator": "conjunction"
             },
             {
-                "id": 2342000,
+                "id": 2341789,
                 "name": "pickup_position",
-                "value": "2352",
+                "value": "1",
                 "operator": "conjunction"
             },
             {
-                "id": 2341999,
+                "id": 2341788,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             }
         ],
-        "entity_type": "AFFILIATE",
+        "entity_type": "DRIVER",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 0.80",
         "configuration_level": "DEFAULT",
-        "sequence_number": 196
-    },
-    {
-        "id": 180,
-        "charge": "STOPS_CHARGE",
-        "rules": [
-            {
-                "id": 2341961,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341962,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "BD",
-        "formula": "$value * 0.75",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 180
-    },
-    {
-        "id": 108,
-        "charge": "TOLLS_CHARGE",
-        "rules": [
-            {
-                "id": 2341708,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341707,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 1.00",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 108
-    },
-    {
-        "id": 149,
-        "charge": "PICKUP_CHARGE",
-        "rules": [
-            {
-                "id": 2341836,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341837,
-                "name": "valid_for_ride_until",
-                "value": "1546210800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341835,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341838,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341839,
-                "name": "valid_for_accounts",
-                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341840,
-                "name": "valid_for_ride_from",
-                "value": "1449010800000",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.75",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 149
-    },
-    {
-        "id": 182,
-        "charge": "MISCELLANEOUS_CHARGE",
-        "rules": [
-            {
-                "id": 2341965,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341966,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "BD",
-        "formula": "$value * 0.75",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 182
-    },
-    {
-        "id": 115,
-        "charge": "ACCOUNT_CHARGE",
-        "rules": [
-            {
-                "id": 2341721,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341722,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 115
-    },
-    {
-        "id": 148,
-        "charge": "ACCOUNT_CHARGE",
-        "rules": [
-            {
-                "id": 2341833,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341829,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341834,
-                "name": "valid_for_ride_until",
-                "value": "1546210800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341832,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341831,
-                "name": "valid_for_ride_from",
-                "value": "1449010800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341830,
-                "name": "valid_for_accounts",
-                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.75",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 148
+        "sequence_number": 139
     },
     {
         "id": 181,
         "charge": "WAITINGTIME_CHARGE",
         "rules": [
             {
-                "id": 2341964,
-                "name": "dropoff_position",
+                "id": 2341963,
+                "name": "pickup_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341963,
-                "name": "pickup_position",
+                "id": 2341964,
+                "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             }
@@ -366,88 +150,136 @@
         "sequence_number": 181
     },
     {
-        "id": 107,
-        "charge": "SERVICE_CHARGE",
+        "id": 186,
+        "charge": "BABYSEATS_CHARGE",
         "rules": [
             {
-                "id": 2341706,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341705,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 1.00",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 107
-    },
-    {
-        "id": 123,
-        "charge": "PROMOCODE_DISCOUNT",
-        "rules": [
-            {
-                "id": 2341741,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341740,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341739,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 123
-    },
-    {
-        "id": 192,
-        "charge": "PICKUP_CHARGE",
-        "rules": [
-            {
-                "id": 2341987,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341988,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341989,
+                "id": 2341974,
                 "name": "pickup_position",
                 "value": "2352",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341973,
+                "name": "dropoff_position",
+                "value": "0",
                 "operator": "conjunction"
             }
         ],
         "entity_type": "AFFILIATE",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.88",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 186
+    },
+    {
+        "id": 135,
+        "charge": "WEB_DISCOUNT",
+        "rules": [
+            {
+                "id": 2341776,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341777,
+                "name": "pickup_position",
+                "value": "1",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341775,
+                "name": "valid_for_canceled_reservation",
+                "value": "true",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 0.80",
         "configuration_level": "DEFAULT",
-        "sequence_number": 192
+        "sequence_number": 135
+    },
+    {
+        "id": 208,
+        "charge": "WEB_DISCOUNT",
+        "rules": [
+            {
+                "id": 2342025,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2342024,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "BD",
+        "formula": "$value * 0.00",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 208
+    },
+    {
+        "id": 132,
+        "charge": "BASE_CHARGE",
+        "rules": [
+            {
+                "id": 2341767,
+                "name": "pickup_position",
+                "value": "1",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341768,
+                "name": "valid_for_canceled_reservation",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341766,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 132
+    },
+    {
+        "id": 113,
+        "charge": "WEB_DISCOUNT",
+        "rules": [
+            {
+                "id": 2341717,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341718,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 113
     },
     {
         "id": 179,
@@ -474,251 +306,17 @@
         "sequence_number": 179
     },
     {
-        "id": 145,
-        "charge": "PROMOCODE_DISCOUNT",
-        "rules": [
-            {
-                "id": 2341814,
-                "name": "valid_for_ride_until",
-                "value": "1546210800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341813,
-                "name": "valid_for_ride_from",
-                "value": "1449010800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341815,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341811,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341812,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341816,
-                "name": "valid_for_accounts",
-                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.75",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 145
-    },
-    {
-        "id": 194,
-        "charge": "STOPS_CHARGE",
-        "rules": [
-            {
-                "id": 2341993,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341994,
-                "name": "pickup_position",
-                "value": "2352",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341995,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 194
-    },
-    {
-        "id": 188,
-        "charge": "WAITINGTIME_CHARGE",
-        "rules": [
-            {
-                "id": 2341977,
-                "name": "pickup_position",
-                "value": "2352",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341978,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.88",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 188
-    },
-    {
-        "id": 184,
-        "charge": "ROUNDTRIP_CHARGE",
-        "rules": [
-            {
-                "id": 2341969,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341970,
-                "name": "pickup_position",
-                "value": "2352",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.88",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 184
-    },
-    {
-        "id": 137,
-        "charge": "ACCOUNT_CHARGE",
-        "rules": [
-            {
-                "id": 2341782,
-                "name": "valid_for_canceled_reservation",
-                "value": "true",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341783,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341781,
-                "name": "pickup_position",
-                "value": "1",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 137
-    },
-    {
-        "id": 157,
+        "id": 211,
         "charge": "WEB_DISCOUNT",
         "rules": [
             {
-                "id": 2341884,
-                "name": "valid_for_accounts",
-                "value": "V005",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341883,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341887,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341886,
-                "name": "valid_for_ride_until",
-                "value": "1483160400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341885,
-                "name": "valid_for_ride_from",
-                "value": "1421384400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341888,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.77",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 157
-    },
-    {
-        "id": 190,
-        "charge": "BASE_CHARGE",
-        "rules": [
-            {
-                "id": 2341982,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341983,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341981,
-                "name": "pickup_position",
-                "value": "2352",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 190
-    },
-    {
-        "id": 203,
-        "charge": "ROUNDTRIP_CHARGE",
-        "rules": [
-            {
-                "id": 2342015,
+                "id": 2342030,
                 "name": "pickup_position",
                 "value": "12736",
                 "operator": "conjunction"
             },
             {
-                "id": 2342014,
+                "id": 2342031,
                 "name": "dropoff_position",
                 "value": "12736",
                 "operator": "conjunction"
@@ -727,71 +325,53 @@
         "entity_type": "AFFILIATE",
         "entity_id": "ALL_ENTITIES",
         "car_class": "BD",
-        "formula": "$value * 0.75",
+        "formula": "$value * 0.65",
         "configuration_level": "DEFAULT",
-        "sequence_number": 203
+        "sequence_number": 211
     },
     {
-        "id": 147,
-        "charge": "GROUP_DISCOUNT",
+        "id": 130,
+        "charge": "WAITINGTIME_CHARGE",
         "rules": [
             {
-                "id": 2341827,
+                "id": 2341761,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341762,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341824,
+                "id": 2341760,
                 "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341828,
-                "name": "valid_for_ride_until",
-                "value": "1546210800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341823,
-                "name": "valid_for_accounts",
-                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341825,
-                "name": "valid_for_ride_from",
-                "value": "1449010800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341826,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
+                "value": "0",
                 "operator": "conjunction"
             }
         ],
         "entity_type": "DRIVER",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.75",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 147
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 130
     },
     {
-        "id": 205,
-        "charge": "WEB_DISCOUNT",
+        "id": 204,
+        "charge": "PROMOCODE_DISCOUNT",
         "rules": [
             {
-                "id": 2342018,
-                "name": "pickup_position",
+                "id": 2342016,
+                "name": "dropoff_position",
                 "value": "2352",
                 "operator": "conjunction"
             },
             {
-                "id": 2342019,
-                "name": "dropoff_position",
+                "id": 2342017,
+                "name": "pickup_position",
                 "value": "2352",
                 "operator": "conjunction"
             }
@@ -801,118 +381,154 @@
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 0.00",
         "configuration_level": "DEFAULT",
-        "sequence_number": 205
+        "sequence_number": 204
     },
     {
-        "id": 167,
-        "charge": "PARKING_CHARGE",
+        "id": 173,
+        "charge": "STOPS_CHARGE",
         "rules": [
             {
-                "id": 2341935,
-                "name": "pickup_position",
+                "id": 2341947,
+                "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341936,
-                "name": "dropoff_position",
+                "id": 2341948,
+                "name": "pickup_position",
                 "value": "0",
                 "operator": "conjunction"
             }
         ],
         "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 173
+    },
+    {
+        "id": 109,
+        "charge": "PARKING_CHARGE",
+        "rules": [
+            {
+                "id": 2341710,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341709,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 1.00",
         "configuration_level": "DEFAULT",
-        "sequence_number": 167
+        "sequence_number": 109
     },
     {
-        "id": 174,
-        "charge": "WAITINGTIME_CHARGE",
+        "id": 129,
+        "charge": "STOPS_CHARGE",
         "rules": [
             {
-                "id": 2341949,
+                "id": 2341758,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341950,
+                "id": 2341759,
                 "name": "pickup_position",
                 "value": "0",
                 "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 174
-    },
-    {
-        "id": 199,
-        "charge": "PROMOCODE_DISCOUNT",
-        "rules": [
-            {
-                "id": 2342006,
-                "name": "dropoff_position",
-                "value": "12736",
-                "operator": "conjunction"
             },
             {
-                "id": 2342007,
-                "name": "pickup_position",
-                "value": "12736",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 199
-    },
-    {
-        "id": 154,
-        "charge": "BASE_CHARGE",
-        "rules": [
-            {
-                "id": 2341868,
-                "name": "valid_for_ride_from",
-                "value": "1421384400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341869,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341865,
+                "id": 2341757,
                 "name": "valid_for_asap_jobs",
-                "value": "false",
+                "value": "true",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 129
+    },
+    {
+        "id": 192,
+        "charge": "PICKUP_CHARGE",
+        "rules": [
+            {
+                "id": 2341987,
+                "name": "dropoff_position",
+                "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341870,
+                "id": 2341989,
+                "name": "pickup_position",
+                "value": "2352",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341988,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 192
+    },
+    {
+        "id": 158,
+        "charge": "GROUP_DISCOUNT",
+        "rules": [
+            {
+                "id": 2341891,
                 "name": "valid_for_ride_until",
                 "value": "1483160400000",
                 "operator": "conjunction"
             },
             {
-                "id": 2341867,
+                "id": 2341889,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341890,
+                "name": "valid_for_accounts",
+                "value": "V005",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341894,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341866,
-                "name": "valid_for_accounts",
-                "value": "V005",
+                "id": 2341892,
+                "name": "valid_for_ride_from",
+                "value": "1421384400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341893,
+                "name": "pickup_position",
+                "value": "9851",
                 "operator": "conjunction"
             }
         ],
@@ -921,79 +537,7 @@
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 0.77",
         "configuration_level": "ACCOUNT",
-        "sequence_number": 154
-    },
-    {
-        "id": 178,
-        "charge": "PICKUP_CHARGE",
-        "rules": [
-            {
-                "id": 2341957,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341958,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "BD",
-        "formula": "$value * 0.75",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 178
-    },
-    {
-        "id": 168,
-        "charge": "ACCOUNT_CHARGE",
-        "rules": [
-            {
-                "id": 2341937,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341938,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 1.00",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 168
-    },
-    {
-        "id": 198,
-        "charge": "ROUNDTRIP_CHARGE",
-        "rules": [
-            {
-                "id": 2342004,
-                "name": "pickup_position",
-                "value": "12736",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342005,
-                "name": "dropoff_position",
-                "value": "12736",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 198
+        "sequence_number": 158
     },
     {
         "id": 112,
@@ -1020,66 +564,72 @@
         "sequence_number": 112
     },
     {
-        "id": 151,
-        "charge": "STOPS_CHARGE",
+        "id": 203,
+        "charge": "ROUNDTRIP_CHARGE",
         "rules": [
             {
-                "id": 2341849,
+                "id": 2342015,
                 "name": "pickup_position",
-                "value": "9851",
+                "value": "12736",
                 "operator": "conjunction"
             },
             {
-                "id": 2341851,
-                "name": "valid_for_accounts",
-                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
+                "id": 2342014,
+                "name": "dropoff_position",
+                "value": "12736",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "BD",
+        "formula": "$value * 0.75",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 203
+    },
+    {
+        "id": 123,
+        "charge": "PROMOCODE_DISCOUNT",
+        "rules": [
+            {
+                "id": 2341741,
+                "name": "pickup_position",
+                "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341848,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341850,
+                "id": 2341739,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341847,
-                "name": "valid_for_ride_from",
-                "value": "1449010800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341852,
-                "name": "valid_for_ride_until",
-                "value": "1546210800000",
+                "id": 2341740,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
                 "operator": "conjunction"
             }
         ],
         "entity_type": "DRIVER",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.75",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 151
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 123
     },
     {
         "id": 206,
         "charge": "GROUP_DISCOUNT",
         "rules": [
             {
-                "id": 2342021,
-                "name": "dropoff_position",
+                "id": 2342020,
+                "name": "pickup_position",
                 "value": "2352",
                 "operator": "conjunction"
             },
             {
-                "id": 2342020,
-                "name": "pickup_position",
+                "id": 2342021,
+                "name": "dropoff_position",
                 "value": "2352",
                 "operator": "conjunction"
             }
@@ -1092,17 +642,23 @@
         "sequence_number": 206
     },
     {
-        "id": 119,
-        "charge": "WAITINGTIME_CHARGE",
+        "id": 142,
+        "charge": "MISCELLANEOUS_CHARGE",
         "rules": [
             {
-                "id": 2341730,
-                "name": "pickup_position",
-                "value": "0",
+                "id": 2341796,
+                "name": "valid_for_canceled_reservation",
+                "value": "true",
                 "operator": "conjunction"
             },
             {
-                "id": 2341729,
+                "id": 2341797,
+                "name": "pickup_position",
+                "value": "1",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341798,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
@@ -1111,54 +667,144 @@
         "entity_type": "DRIVER",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
+        "formula": "$value * 0.80",
         "configuration_level": "DEFAULT",
-        "sequence_number": 119
+        "sequence_number": 142
     },
     {
-        "id": 195,
-        "charge": "WAITINGTIME_CHARGE",
+        "id": 156,
+        "charge": "PROMOCODE_DISCOUNT",
         "rules": [
             {
-                "id": 2341998,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
+                "id": 2341880,
+                "name": "valid_for_ride_until",
+                "value": "1483160400000",
                 "operator": "conjunction"
             },
             {
-                "id": 2341996,
+                "id": 2341878,
+                "name": "valid_for_accounts",
+                "value": "V005",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341881,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341879,
+                "name": "valid_for_ride_from",
+                "value": "1421384400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341882,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341877,
                 "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.77",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 156
+    },
+    {
+        "id": 175,
+        "charge": "MISCELLANEOUS_CHARGE",
+        "rules": [
+            {
+                "id": 2341951,
+                "name": "pickup_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341997,
-                "name": "pickup_position",
-                "value": "2352",
+                "id": 2341952,
+                "name": "dropoff_position",
+                "value": "0",
                 "operator": "conjunction"
             }
         ],
         "entity_type": "AFFILIATE",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
+        "formula": "$value * 0.65",
         "configuration_level": "DEFAULT",
-        "sequence_number": 195
+        "sequence_number": 175
+    },
+    {
+        "id": 148,
+        "charge": "ACCOUNT_CHARGE",
+        "rules": [
+            {
+                "id": 2341829,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341830,
+                "name": "valid_for_accounts",
+                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341831,
+                "name": "valid_for_ride_from",
+                "value": "1449010800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341833,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341834,
+                "name": "valid_for_ride_until",
+                "value": "1546210800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341832,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.75",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 148
     },
     {
         "id": 133,
         "charge": "ROUNDTRIP_CHARGE",
         "rules": [
             {
-                "id": 2341771,
-                "name": "pickup_position",
-                "value": "1",
-                "operator": "conjunction"
-            },
-            {
                 "id": 2341770,
                 "name": "valid_for_canceled_reservation",
                 "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341771,
+                "name": "pickup_position",
+                "value": "1",
                 "operator": "conjunction"
             },
             {
@@ -1200,619 +846,19 @@
         "sequence_number": 176
     },
     {
-        "id": 127,
-        "charge": "PICKUP_CHARGE",
-        "rules": [
-            {
-                "id": 2341752,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341753,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341751,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 127
-    },
-    {
-        "id": 135,
-        "charge": "WEB_DISCOUNT",
-        "rules": [
-            {
-                "id": 2341777,
-                "name": "pickup_position",
-                "value": "1",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341776,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341775,
-                "name": "valid_for_canceled_reservation",
-                "value": "true",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 135
-    },
-    {
-        "id": 171,
-        "charge": "PICKUP_CHARGE",
-        "rules": [
-            {
-                "id": 2341943,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341944,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 171
-    },
-    {
-        "id": 156,
-        "charge": "PROMOCODE_DISCOUNT",
-        "rules": [
-            {
-                "id": 2341880,
-                "name": "valid_for_ride_until",
-                "value": "1483160400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341878,
-                "name": "valid_for_accounts",
-                "value": "V005",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341877,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341881,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341882,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341879,
-                "name": "valid_for_ride_from",
-                "value": "1421384400000",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.77",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 156
-    },
-    {
-        "id": 187,
-        "charge": "STOPS_CHARGE",
-        "rules": [
-            {
-                "id": 2341976,
-                "name": "pickup_position",
-                "value": "2352",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341975,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.88",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 187
-    },
-    {
-        "id": 121,
-        "charge": "BASE_CHARGE",
-        "rules": [
-            {
-                "id": 2341733,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341735,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341734,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 121
-    },
-    {
-        "id": 150,
-        "charge": "BABYSEATS_CHARGE",
-        "rules": [
-            {
-                "id": 2341841,
-                "name": "valid_for_ride_until",
-                "value": "1546210800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341842,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341846,
-                "name": "valid_for_ride_from",
-                "value": "1449010800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341844,
-                "name": "valid_for_accounts",
-                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341845,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341843,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.75",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 150
-    },
-    {
-        "id": 158,
+        "id": 201,
         "charge": "GROUP_DISCOUNT",
         "rules": [
             {
-                "id": 2341889,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341894,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341891,
-                "name": "valid_for_ride_until",
-                "value": "1483160400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341890,
-                "name": "valid_for_accounts",
-                "value": "V005",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341892,
-                "name": "valid_for_ride_from",
-                "value": "1421384400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341893,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.77",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 158
-    },
-    {
-        "id": 128,
-        "charge": "BABYSEATS_CHARGE",
-        "rules": [
-            {
-                "id": 2341754,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341755,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341756,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 128
-    },
-    {
-        "id": 143,
-        "charge": "BASE_CHARGE",
-        "rules": [
-            {
-                "id": 2341799,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341803,
-                "name": "valid_for_ride_from",
-                "value": "1449010800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341800,
-                "name": "valid_for_ride_until",
-                "value": "1546210800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341804,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341801,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341802,
-                "name": "valid_for_accounts",
-                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.75",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 143
-    },
-    {
-        "id": 186,
-        "charge": "BABYSEATS_CHARGE",
-        "rules": [
-            {
-                "id": 2341974,
-                "name": "pickup_position",
-                "value": "2352",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341973,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.88",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 186
-    },
-    {
-        "id": 207,
-        "charge": "PROMOCODE_DISCOUNT",
-        "rules": [
-            {
-                "id": 2342022,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342023,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "BD",
-        "formula": "$value * 0.00",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 207
-    },
-    {
-        "id": 144,
-        "charge": "ROUNDTRIP_CHARGE",
-        "rules": [
-            {
-                "id": 2341808,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341805,
-                "name": "valid_for_accounts",
-                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341810,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341807,
-                "name": "valid_for_ride_until",
-                "value": "1546210800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341806,
-                "name": "valid_for_ride_from",
-                "value": "1449010800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341809,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.75",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 144
-    },
-    {
-        "id": 129,
-        "charge": "STOPS_CHARGE",
-        "rules": [
-            {
-                "id": 2341758,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341757,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341759,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 129
-    },
-    {
-        "id": 202,
-        "charge": "BASE_CHARGE",
-        "rules": [
-            {
-                "id": 2342013,
-                "name": "pickup_position",
-                "value": "12736",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342012,
+                "id": 2342010,
                 "name": "dropoff_position",
                 "value": "12736",
                 "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "BD",
-        "formula": "$value * 0.75",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 202
-    },
-    {
-        "id": 134,
-        "charge": "PROMOCODE_DISCOUNT",
-        "rules": [
-            {
-                "id": 2341772,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
             },
             {
-                "id": 2341773,
+                "id": 2342011,
                 "name": "pickup_position",
-                "value": "1",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341774,
-                "name": "valid_for_canceled_reservation",
-                "value": "true",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 134
-    },
-    {
-        "id": 138,
-        "charge": "PICKUP_CHARGE",
-        "rules": [
-            {
-                "id": 2341785,
-                "name": "valid_for_canceled_reservation",
-                "value": "true",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341786,
-                "name": "pickup_position",
-                "value": "1",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341784,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 138
-    },
-    {
-        "id": 124,
-        "charge": "WEB_DISCOUNT",
-        "rules": [
-            {
-                "id": 2341743,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341742,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341744,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 124
-    },
-    {
-        "id": 175,
-        "charge": "MISCELLANEOUS_CHARGE",
-        "rules": [
-            {
-                "id": 2341951,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341952,
-                "name": "dropoff_position",
-                "value": "0",
+                "value": "12736",
                 "operator": "conjunction"
             }
         ],
@@ -1821,58 +867,52 @@
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 0.65",
         "configuration_level": "DEFAULT",
-        "sequence_number": 175
+        "sequence_number": 201
     },
     {
-        "id": 132,
-        "charge": "BASE_CHARGE",
+        "id": 166,
+        "charge": "TOLLS_CHARGE",
         "rules": [
             {
-                "id": 2341767,
+                "id": 2341933,
                 "name": "pickup_position",
-                "value": "1",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341766,
-                "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341768,
-                "name": "valid_for_canceled_reservation",
-                "value": "true",
+                "id": 2341934,
+                "name": "dropoff_position",
+                "value": "0",
                 "operator": "conjunction"
             }
         ],
-        "entity_type": "DRIVER",
+        "entity_type": "AFFILIATE",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
+        "formula": "$value * 1.00",
         "configuration_level": "DEFAULT",
-        "sequence_number": 132
+        "sequence_number": 166
     },
     {
-        "id": 191,
-        "charge": "ROUNDTRIP_CHARGE",
+        "id": 194,
+        "charge": "STOPS_CHARGE",
         "rules": [
             {
-                "id": 2341984,
+                "id": 2341995,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341994,
                 "name": "pickup_position",
                 "value": "2352",
                 "operator": "conjunction"
             },
             {
-                "id": 2341986,
+                "id": 2341993,
                 "name": "dropoff_position",
                 "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341985,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
                 "operator": "conjunction"
             }
         ],
@@ -1881,141 +921,123 @@
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 0.80",
         "configuration_level": "DEFAULT",
-        "sequence_number": 191
+        "sequence_number": 194
     },
     {
-        "id": 159,
+        "id": 210,
+        "charge": "PROMOCODE_DISCOUNT",
+        "rules": [
+            {
+                "id": 2342028,
+                "name": "dropoff_position",
+                "value": "12736",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2342029,
+                "name": "pickup_position",
+                "value": "12736",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "BD",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 210
+    },
+    {
+        "id": 151,
+        "charge": "STOPS_CHARGE",
+        "rules": [
+            {
+                "id": 2341850,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341847,
+                "name": "valid_for_ride_from",
+                "value": "1449010800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341852,
+                "name": "valid_for_ride_until",
+                "value": "1546210800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341849,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341848,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341851,
+                "name": "valid_for_accounts",
+                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.75",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 151
+    },
+    {
+        "id": 195,
+        "charge": "WAITINGTIME_CHARGE",
+        "rules": [
+            {
+                "id": 2341996,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341998,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341997,
+                "name": "pickup_position",
+                "value": "2352",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 195
+    },
+    {
+        "id": 115,
         "charge": "ACCOUNT_CHARGE",
         "rules": [
             {
-                "id": 2341896,
-                "name": "valid_for_ride_from",
-                "value": "1421384400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341898,
-                "name": "valid_for_accounts",
-                "value": "V005",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341899,
-                "name": "valid_for_ride_until",
-                "value": "1483160400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341900,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341895,
-                "name": "dropoff_position",
+                "id": 2341721,
+                "name": "pickup_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341897,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.77",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 159
-    },
-    {
-        "id": 204,
-        "charge": "PROMOCODE_DISCOUNT",
-        "rules": [
-            {
-                "id": 2342017,
-                "name": "pickup_position",
-                "value": "2352",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342016,
+                "id": 2341722,
                 "name": "dropoff_position",
-                "value": "2352",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.00",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 204
-    },
-    {
-        "id": 162,
-        "charge": "STOPS_CHARGE",
-        "rules": [
-            {
-                "id": 2341914,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341915,
-                "name": "valid_for_accounts",
-                "value": "V005",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341917,
-                "name": "valid_for_ride_until",
-                "value": "1483160400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341916,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341918,
-                "name": "valid_for_ride_from",
-                "value": "1421384400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341913,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.77",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 162
-    },
-    {
-        "id": 111,
-        "charge": "ROUNDTRIP_CHARGE",
-        "rules": [
-            {
-                "id": 2341714,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341713,
-                "name": "pickup_position",
                 "value": "0",
                 "operator": "conjunction"
             }
@@ -2025,145 +1047,7 @@
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 0.65",
         "configuration_level": "DEFAULT",
-        "sequence_number": 111
-    },
-    {
-        "id": 131,
-        "charge": "MISCELLANEOUS_CHARGE",
-        "rules": [
-            {
-                "id": 2341764,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341763,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341765,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 131
-    },
-    {
-        "id": 193,
-        "charge": "BABYSEATS_CHARGE",
-        "rules": [
-            {
-                "id": 2341991,
-                "name": "pickup_position",
-                "value": "2352",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341990,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341992,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 193
-    },
-    {
-        "id": 139,
-        "charge": "BABYSEATS_CHARGE",
-        "rules": [
-            {
-                "id": 2341788,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341789,
-                "name": "pickup_position",
-                "value": "1",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341787,
-                "name": "valid_for_canceled_reservation",
-                "value": "true",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 139
-    },
-    {
-        "id": 183,
-        "charge": "BASE_CHARGE",
-        "rules": [
-            {
-                "id": 2341967,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341968,
-                "name": "pickup_position",
-                "value": "2352",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.88",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 183
-    },
-    {
-        "id": 113,
-        "charge": "WEB_DISCOUNT",
-        "rules": [
-            {
-                "id": 2341717,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341718,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 113
+        "sequence_number": 115
     },
     {
         "id": 141,
@@ -2196,43 +1080,169 @@
         "sequence_number": 141
     },
     {
-        "id": 155,
-        "charge": "ROUNDTRIP_CHARGE",
+        "id": 119,
+        "charge": "WAITINGTIME_CHARGE",
         "rules": [
             {
-                "id": 2341873,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
+                "id": 2341730,
+                "name": "pickup_position",
+                "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341872,
+                "id": 2341729,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 119
+    },
+    {
+        "id": 120,
+        "charge": "MISCELLANEOUS_CHARGE",
+        "rules": [
+            {
+                "id": 2341731,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341732,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 120
+    },
+    {
+        "id": 137,
+        "charge": "ACCOUNT_CHARGE",
+        "rules": [
+            {
+                "id": 2341783,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341871,
+                "id": 2341781,
+                "name": "pickup_position",
+                "value": "1",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341782,
+                "name": "valid_for_canceled_reservation",
+                "value": "true",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 137
+    },
+    {
+        "id": 150,
+        "charge": "BABYSEATS_CHARGE",
+        "rules": [
+            {
+                "id": 2341845,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341841,
+                "name": "valid_for_ride_until",
+                "value": "1546210800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341843,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341846,
                 "name": "valid_for_ride_from",
-                "value": "1421384400000",
+                "value": "1449010800000",
                 "operator": "conjunction"
             },
             {
-                "id": 2341875,
+                "id": 2341842,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341844,
                 "name": "valid_for_accounts",
-                "value": "V005",
+                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
                 "operator": "conjunction"
-            },
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.75",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 150
+    },
+    {
+        "id": 162,
+        "charge": "STOPS_CHARGE",
+        "rules": [
             {
-                "id": 2341874,
+                "id": 2341917,
                 "name": "valid_for_ride_until",
                 "value": "1483160400000",
                 "operator": "conjunction"
             },
             {
-                "id": 2341876,
+                "id": 2341913,
                 "name": "pickup_position",
                 "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341914,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341918,
+                "name": "valid_for_ride_from",
+                "value": "1421384400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341916,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341915,
+                "name": "valid_for_accounts",
+                "value": "V005",
                 "operator": "conjunction"
             }
         ],
@@ -2241,7 +1251,61 @@
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 0.77",
         "configuration_level": "ACCOUNT",
-        "sequence_number": 155
+        "sequence_number": 162
+    },
+    {
+        "id": 177,
+        "charge": "ROUNDTRIP_CHARGE",
+        "rules": [
+            {
+                "id": 2341955,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341956,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "BD",
+        "formula": "$value * 0.75",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 177
+    },
+    {
+        "id": 131,
+        "charge": "MISCELLANEOUS_CHARGE",
+        "rules": [
+            {
+                "id": 2341764,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341765,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341763,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 131
     },
     {
         "id": 185,
@@ -2268,41 +1332,47 @@
         "sequence_number": 185
     },
     {
-        "id": 189,
-        "charge": "MISCELLANEOUS_CHARGE",
+        "id": 134,
+        "charge": "PROMOCODE_DISCOUNT",
         "rules": [
             {
-                "id": 2341980,
-                "name": "pickup_position",
-                "value": "2352",
+                "id": 2341772,
+                "name": "dropoff_position",
+                "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341979,
-                "name": "dropoff_position",
-                "value": "0",
+                "id": 2341773,
+                "name": "pickup_position",
+                "value": "1",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341774,
+                "name": "valid_for_canceled_reservation",
+                "value": "true",
                 "operator": "conjunction"
             }
         ],
-        "entity_type": "AFFILIATE",
+        "entity_type": "DRIVER",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.88",
+        "formula": "$value * 0.80",
         "configuration_level": "DEFAULT",
-        "sequence_number": 189
+        "sequence_number": 134
     },
     {
-        "id": 166,
-        "charge": "TOLLS_CHARGE",
+        "id": 165,
+        "charge": "SERVICE_CHARGE",
         "rules": [
             {
-                "id": 2341934,
+                "id": 2341932,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341933,
+                "id": 2341931,
                 "name": "pickup_position",
                 "value": "0",
                 "operator": "conjunction"
@@ -2313,16 +1383,274 @@
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 1.00",
         "configuration_level": "DEFAULT",
-        "sequence_number": 166
+        "sequence_number": 165
+    },
+    {
+        "id": 144,
+        "charge": "ROUNDTRIP_CHARGE",
+        "rules": [
+            {
+                "id": 2341809,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341807,
+                "name": "valid_for_ride_until",
+                "value": "1546210800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341806,
+                "name": "valid_for_ride_from",
+                "value": "1449010800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341810,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341808,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341805,
+                "name": "valid_for_accounts",
+                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.75",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 144
+    },
+    {
+        "id": 128,
+        "charge": "BABYSEATS_CHARGE",
+        "rules": [
+            {
+                "id": 2341756,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341754,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341755,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 128
+    },
+    {
+        "id": 183,
+        "charge": "BASE_CHARGE",
+        "rules": [
+            {
+                "id": 2341967,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341968,
+                "name": "pickup_position",
+                "value": "2352",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.88",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 183
+    },
+    {
+        "id": 182,
+        "charge": "MISCELLANEOUS_CHARGE",
+        "rules": [
+            {
+                "id": 2341966,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341965,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "BD",
+        "formula": "$value * 0.75",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 182
+    },
+    {
+        "id": 207,
+        "charge": "PROMOCODE_DISCOUNT",
+        "rules": [
+            {
+                "id": 2342023,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2342022,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "BD",
+        "formula": "$value * 0.00",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 207
+    },
+    {
+        "id": 168,
+        "charge": "ACCOUNT_CHARGE",
+        "rules": [
+            {
+                "id": 2341938,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341937,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 1.00",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 168
+    },
+    {
+        "id": 174,
+        "charge": "WAITINGTIME_CHARGE",
+        "rules": [
+            {
+                "id": 2341950,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341949,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 174
+    },
+    {
+        "id": 124,
+        "charge": "WEB_DISCOUNT",
+        "rules": [
+            {
+                "id": 2341743,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341744,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341742,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 124
+    },
+    {
+        "id": 126,
+        "charge": "ACCOUNT_CHARGE",
+        "rules": [
+            {
+                "id": 2341748,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341750,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341749,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 126
     },
     {
         "id": 122,
         "charge": "ROUNDTRIP_CHARGE",
         "rules": [
             {
-                "id": 2341738,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
+                "id": 2341737,
+                "name": "pickup_position",
+                "value": "0",
                 "operator": "conjunction"
             },
             {
@@ -2332,9 +1660,9 @@
                 "operator": "conjunction"
             },
             {
-                "id": 2341737,
-                "name": "pickup_position",
-                "value": "0",
+                "id": 2341738,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
                 "operator": "conjunction"
             }
         ],
@@ -2346,43 +1674,19 @@
         "sequence_number": 122
     },
     {
-        "id": 114,
-        "charge": "GROUP_DISCOUNT",
+        "id": 171,
+        "charge": "PICKUP_CHARGE",
         "rules": [
             {
-                "id": 2341720,
-                "name": "pickup_position",
+                "id": 2341943,
+                "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341719,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 114
-    },
-    {
-        "id": 200,
-        "charge": "WEB_DISCOUNT",
-        "rules": [
-            {
-                "id": 2342008,
-                "name": "dropoff_position",
-                "value": "12736",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342009,
+                "id": 2341944,
                 "name": "pickup_position",
-                "value": "12736",
+                "value": "0",
                 "operator": "conjunction"
             }
         ],
@@ -2391,115 +1695,157 @@
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 0.65",
         "configuration_level": "DEFAULT",
-        "sequence_number": 200
+        "sequence_number": 171
     },
     {
-        "id": 213,
-        "charge": "ACCOUNT_CHARGE",
+        "id": 118,
+        "charge": "STOPS_CHARGE",
         "rules": [
             {
-                "id": 2342035,
-                "name": "dropoff_position",
+                "id": 2341727,
+                "name": "pickup_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2342036,
-                "name": "valid_for_canceled_reservation",
-                "value": "true",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342034,
-                "name": "pickup_position",
-                "value": "1",
+                "id": 2341728,
+                "name": "dropoff_position",
+                "value": "0",
                 "operator": "conjunction"
             }
         ],
         "entity_type": "DRIVER",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
+        "formula": "$value * 0.65",
         "configuration_level": "DEFAULT",
-        "sequence_number": 213
+        "sequence_number": 118
     },
     {
-        "id": 130,
-        "charge": "WAITINGTIME_CHARGE",
+        "id": 187,
+        "charge": "STOPS_CHARGE",
         "rules": [
             {
-                "id": 2341762,
+                "id": 2341976,
+                "name": "pickup_position",
+                "value": "2352",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341975,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.88",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 187
+    },
+    {
+        "id": 209,
+        "charge": "GROUP_DISCOUNT",
+        "rules": [
+            {
+                "id": 2342027,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341760,
+                "id": 2342026,
                 "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "BD",
+        "formula": "$value * 0.00",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 209
+    },
+    {
+        "id": 190,
+        "charge": "BASE_CHARGE",
+        "rules": [
+            {
+                "id": 2341983,
+                "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341761,
+                "id": 2341982,
                 "name": "valid_for_asap_jobs",
                 "value": "true",
                 "operator": "conjunction"
+            },
+            {
+                "id": 2341981,
+                "name": "pickup_position",
+                "value": "2352",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 190
+    },
+    {
+        "id": 155,
+        "charge": "ROUNDTRIP_CHARGE",
+        "rules": [
+            {
+                "id": 2341875,
+                "name": "valid_for_accounts",
+                "value": "V005",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341871,
+                "name": "valid_for_ride_from",
+                "value": "1421384400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341873,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341876,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341872,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341874,
+                "name": "valid_for_ride_until",
+                "value": "1483160400000",
+                "operator": "conjunction"
             }
         ],
         "entity_type": "DRIVER",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 130
-    },
-    {
-        "id": 177,
-        "charge": "ROUNDTRIP_CHARGE",
-        "rules": [
-            {
-                "id": 2341956,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341955,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "BD",
-        "formula": "$value * 0.75",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 177
-    },
-    {
-        "id": 212,
-        "charge": "GROUP_DISCOUNT",
-        "rules": [
-            {
-                "id": 2342033,
-                "name": "dropoff_position",
-                "value": "12736",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342032,
-                "name": "pickup_position",
-                "value": "12736",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "BD",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 212
+        "formula": "$value * 0.77",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 155
     },
     {
         "id": 125,
@@ -2532,95 +1878,23 @@
         "sequence_number": 125
     },
     {
-        "id": 120,
-        "charge": "MISCELLANEOUS_CHARGE",
+        "id": 193,
+        "charge": "BABYSEATS_CHARGE",
         "rules": [
             {
-                "id": 2341732,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341731,
+                "id": 2341991,
                 "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 120
-    },
-    {
-        "id": 118,
-        "charge": "STOPS_CHARGE",
-        "rules": [
-            {
-                "id": 2341727,
-                "name": "pickup_position",
-                "value": "0",
+                "value": "2352",
                 "operator": "conjunction"
             },
             {
-                "id": 2341728,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 118
-    },
-    {
-        "id": 142,
-        "charge": "MISCELLANEOUS_CHARGE",
-        "rules": [
-            {
-                "id": 2341798,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341797,
-                "name": "pickup_position",
-                "value": "1",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341796,
-                "name": "valid_for_canceled_reservation",
+                "id": 2341990,
+                "name": "valid_for_asap_jobs",
                 "value": "true",
                 "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 142
-    },
-    {
-        "id": 173,
-        "charge": "STOPS_CHARGE",
-        "rules": [
-            {
-                "id": 2341948,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
             },
             {
-                "id": 2341947,
+                "id": 2341992,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
@@ -2629,466 +1903,118 @@
         "entity_type": "AFFILIATE",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
+        "formula": "$value * 0.80",
         "configuration_level": "DEFAULT",
-        "sequence_number": 173
+        "sequence_number": 193
     },
     {
-        "id": 208,
+        "id": 149,
+        "charge": "PICKUP_CHARGE",
+        "rules": [
+            {
+                "id": 2341838,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341836,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341837,
+                "name": "valid_for_ride_until",
+                "value": "1546210800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341835,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341839,
+                "name": "valid_for_accounts",
+                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341840,
+                "name": "valid_for_ride_from",
+                "value": "1449010800000",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.75",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 149
+    },
+    {
+        "id": 180,
+        "charge": "STOPS_CHARGE",
+        "rules": [
+            {
+                "id": 2341962,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341961,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "BD",
+        "formula": "$value * 0.75",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 180
+    },
+    {
+        "id": 146,
         "charge": "WEB_DISCOUNT",
         "rules": [
             {
-                "id": 2342025,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342024,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "BD",
-        "formula": "$value * 0.00",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 208
-    },
-    {
-        "id": 210,
-        "charge": "PROMOCODE_DISCOUNT",
-        "rules": [
-            {
-                "id": 2342028,
-                "name": "dropoff_position",
-                "value": "12736",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342029,
-                "name": "pickup_position",
-                "value": "12736",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "BD",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 210
-    },
-    {
-        "id": 116,
-        "charge": "PICKUP_CHARGE",
-        "rules": [
-            {
-                "id": 2341723,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341724,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 116
-    },
-    {
-        "id": 126,
-        "charge": "ACCOUNT_CHARGE",
-        "rules": [
-            {
-                "id": 2341749,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341748,
+                "id": 2341820,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
             },
             {
-                "id": 2341750,
-                "name": "valid_for_asap_jobs",
-                "value": "true",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 126
-    },
-    {
-        "id": 153,
-        "charge": "MISCELLANEOUS_CHARGE",
-        "rules": [
-            {
-                "id": 2341861,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341862,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341859,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341860,
-                "name": "valid_for_accounts",
-                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341864,
+                "id": 2341822,
                 "name": "valid_for_ride_from",
                 "value": "1449010800000",
                 "operator": "conjunction"
             },
             {
-                "id": 2341863,
-                "name": "valid_for_ride_until",
-                "value": "1546210800000",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.75",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 153
-    },
-    {
-        "id": 160,
-        "charge": "PICKUP_CHARGE",
-        "rules": [
-            {
-                "id": 2341906,
-                "name": "valid_for_ride_until",
-                "value": "1483160400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341905,
-                "name": "valid_for_ride_from",
-                "value": "1421384400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341903,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341902,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341904,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341901,
-                "name": "valid_for_accounts",
-                "value": "V005",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.77",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 160
-    },
-    {
-        "id": 136,
-        "charge": "GROUP_DISCOUNT",
-        "rules": [
-            {
-                "id": 2341780,
-                "name": "pickup_position",
-                "value": "1",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341778,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341779,
-                "name": "valid_for_canceled_reservation",
-                "value": "true",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 136
-    },
-    {
-        "id": 109,
-        "charge": "PARKING_CHARGE",
-        "rules": [
-            {
-                "id": 2341709,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341710,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 1.00",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 109
-    },
-    {
-        "id": 201,
-        "charge": "GROUP_DISCOUNT",
-        "rules": [
-            {
-                "id": 2342011,
-                "name": "pickup_position",
-                "value": "12736",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342010,
-                "name": "dropoff_position",
-                "value": "12736",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 201
-    },
-    {
-        "id": 209,
-        "charge": "GROUP_DISCOUNT",
-        "rules": [
-            {
-                "id": 2342026,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342027,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "BD",
-        "formula": "$value * 0.00",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 209
-    },
-    {
-        "id": 165,
-        "charge": "SERVICE_CHARGE",
-        "rules": [
-            {
-                "id": 2341931,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341932,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 1.00",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 165
-    },
-    {
-        "id": 164,
-        "charge": "MISCELLANEOUS_CHARGE",
-        "rules": [
-            {
-                "id": 2341930,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341927,
-                "name": "valid_for_ride_until",
-                "value": "1483160400000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341928,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341925,
-                "name": "valid_for_accounts",
-                "value": "V005",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341926,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341929,
-                "name": "valid_for_ride_from",
-                "value": "1421384400000",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.77",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 164
-    },
-    {
-        "id": 197,
-        "charge": "BASE_CHARGE",
-        "rules": [
-            {
-                "id": 2342003,
-                "name": "pickup_position",
-                "value": "12736",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2342002,
-                "name": "dropoff_position",
-                "value": "12736",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "AFFILIATE",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 197
-    },
-    {
-        "id": 110,
-        "charge": "BASE_CHARGE",
-        "rules": [
-            {
-                "id": 2341711,
-                "name": "pickup_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341712,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.65",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 110
-    },
-    {
-        "id": 152,
-        "charge": "WAITINGTIME_CHARGE",
-        "rules": [
-            {
-                "id": 2341857,
+                "id": 2341819,
                 "name": "valid_for_ride_until",
                 "value": "1546210800000",
                 "operator": "conjunction"
             },
             {
-                "id": 2341853,
+                "id": 2341821,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341818,
                 "name": "valid_for_accounts",
                 "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
                 "operator": "conjunction"
             },
             {
-                "id": 2341854,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341855,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341858,
-                "name": "valid_for_ride_from",
-                "value": "1449010800000",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341856,
+                "id": 2341817,
                 "name": "pickup_position",
                 "value": "9851",
                 "operator": "conjunction"
@@ -3099,37 +2025,7 @@
         "car_class": "ALL_CAR_CLASSES",
         "formula": "$value * 0.75",
         "configuration_level": "ACCOUNT",
-        "sequence_number": 152
-    },
-    {
-        "id": 140,
-        "charge": "STOPS_CHARGE",
-        "rules": [
-            {
-                "id": 2341792,
-                "name": "pickup_position",
-                "value": "1",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341790,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341791,
-                "name": "valid_for_canceled_reservation",
-                "value": "true",
-                "operator": "conjunction"
-            }
-        ],
-        "entity_type": "DRIVER",
-        "entity_id": "ALL_ENTITIES",
-        "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.80",
-        "configuration_level": "DEFAULT",
-        "sequence_number": 140
+        "sequence_number": 146
     },
     {
         "id": 169,
@@ -3156,13 +2052,73 @@
         "sequence_number": 169
     },
     {
+        "id": 108,
+        "charge": "TOLLS_CHARGE",
+        "rules": [
+            {
+                "id": 2341708,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341707,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 1.00",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 108
+    },
+    {
+        "id": 197,
+        "charge": "BASE_CHARGE",
+        "rules": [
+            {
+                "id": 2342002,
+                "name": "dropoff_position",
+                "value": "12736",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2342003,
+                "name": "pickup_position",
+                "value": "12736",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 197
+    },
+    {
         "id": 161,
         "charge": "BABYSEATS_CHARGE",
         "rules": [
             {
+                "id": 2341909,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
                 "id": 2341907,
                 "name": "valid_for_ride_from",
                 "value": "1421384400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341910,
+                "name": "dropoff_position",
+                "value": "0",
                 "operator": "conjunction"
             },
             {
@@ -3178,18 +2134,6 @@
                 "operator": "conjunction"
             },
             {
-                "id": 2341910,
-                "name": "dropoff_position",
-                "value": "0",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341909,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
                 "id": 2341912,
                 "name": "pickup_position",
                 "value": "9851",
@@ -3202,6 +2146,1080 @@
         "formula": "$value * 0.77",
         "configuration_level": "ACCOUNT",
         "sequence_number": 161
+    },
+    {
+        "id": 163,
+        "charge": "WAITINGTIME_CHARGE",
+        "rules": [
+            {
+                "id": 2341922,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341920,
+                "name": "valid_for_ride_until",
+                "value": "1483160400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341923,
+                "name": "valid_for_accounts",
+                "value": "V005",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341921,
+                "name": "valid_for_ride_from",
+                "value": "1421384400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341924,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341919,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.77",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 163
+    },
+    {
+        "id": 213,
+        "charge": "ACCOUNT_CHARGE",
+        "rules": [
+            {
+                "id": 2342035,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2342036,
+                "name": "valid_for_canceled_reservation",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2342034,
+                "name": "pickup_position",
+                "value": "1",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 213
+    },
+    {
+        "id": 178,
+        "charge": "PICKUP_CHARGE",
+        "rules": [
+            {
+                "id": 2341958,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341957,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "BD",
+        "formula": "$value * 0.75",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 178
+    },
+    {
+        "id": 159,
+        "charge": "ACCOUNT_CHARGE",
+        "rules": [
+            {
+                "id": 2341899,
+                "name": "valid_for_ride_until",
+                "value": "1483160400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341900,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341895,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341898,
+                "name": "valid_for_accounts",
+                "value": "V005",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341896,
+                "name": "valid_for_ride_from",
+                "value": "1421384400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341897,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.77",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 159
+    },
+    {
+        "id": 143,
+        "charge": "BASE_CHARGE",
+        "rules": [
+            {
+                "id": 2341800,
+                "name": "valid_for_ride_until",
+                "value": "1546210800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341804,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341799,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341802,
+                "name": "valid_for_accounts",
+                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341801,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341803,
+                "name": "valid_for_ride_from",
+                "value": "1449010800000",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.75",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 143
+    },
+    {
+        "id": 127,
+        "charge": "PICKUP_CHARGE",
+        "rules": [
+            {
+                "id": 2341752,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341751,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341753,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 127
+    },
+    {
+        "id": 140,
+        "charge": "STOPS_CHARGE",
+        "rules": [
+            {
+                "id": 2341791,
+                "name": "valid_for_canceled_reservation",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341792,
+                "name": "pickup_position",
+                "value": "1",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341790,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 140
+    },
+    {
+        "id": 138,
+        "charge": "PICKUP_CHARGE",
+        "rules": [
+            {
+                "id": 2341784,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341785,
+                "name": "valid_for_canceled_reservation",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341786,
+                "name": "pickup_position",
+                "value": "1",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 138
+    },
+    {
+        "id": 160,
+        "charge": "PICKUP_CHARGE",
+        "rules": [
+            {
+                "id": 2341905,
+                "name": "valid_for_ride_from",
+                "value": "1421384400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341901,
+                "name": "valid_for_accounts",
+                "value": "V005",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341903,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341902,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341906,
+                "name": "valid_for_ride_until",
+                "value": "1483160400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341904,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.77",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 160
+    },
+    {
+        "id": 117,
+        "charge": "BABYSEATS_CHARGE",
+        "rules": [
+            {
+                "id": 2341726,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341725,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 117
+    },
+    {
+        "id": 205,
+        "charge": "WEB_DISCOUNT",
+        "rules": [
+            {
+                "id": 2342018,
+                "name": "pickup_position",
+                "value": "2352",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2342019,
+                "name": "dropoff_position",
+                "value": "2352",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.00",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 205
+    },
+    {
+        "id": 152,
+        "charge": "WAITINGTIME_CHARGE",
+        "rules": [
+            {
+                "id": 2341858,
+                "name": "valid_for_ride_from",
+                "value": "1449010800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341853,
+                "name": "valid_for_accounts",
+                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341857,
+                "name": "valid_for_ride_until",
+                "value": "1546210800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341855,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341854,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341856,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.75",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 152
+    },
+    {
+        "id": 110,
+        "charge": "BASE_CHARGE",
+        "rules": [
+            {
+                "id": 2341712,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341711,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 110
+    },
+    {
+        "id": 164,
+        "charge": "MISCELLANEOUS_CHARGE",
+        "rules": [
+            {
+                "id": 2341930,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341929,
+                "name": "valid_for_ride_from",
+                "value": "1421384400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341928,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341927,
+                "name": "valid_for_ride_until",
+                "value": "1483160400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341926,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341925,
+                "name": "valid_for_accounts",
+                "value": "V005",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.77",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 164
+    },
+    {
+        "id": 107,
+        "charge": "SERVICE_CHARGE",
+        "rules": [
+            {
+                "id": 2341706,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341705,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 1.00",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 107
+    },
+    {
+        "id": 199,
+        "charge": "PROMOCODE_DISCOUNT",
+        "rules": [
+            {
+                "id": 2342006,
+                "name": "dropoff_position",
+                "value": "12736",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2342007,
+                "name": "pickup_position",
+                "value": "12736",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 199
+    },
+    {
+        "id": 111,
+        "charge": "ROUNDTRIP_CHARGE",
+        "rules": [
+            {
+                "id": 2341714,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341713,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 111
+    },
+    {
+        "id": 121,
+        "charge": "BASE_CHARGE",
+        "rules": [
+            {
+                "id": 2341733,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341734,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341735,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 121
+    },
+    {
+        "id": 172,
+        "charge": "BABYSEATS_CHARGE",
+        "rules": [
+            {
+                "id": 2341946,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341945,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 172
+    },
+    {
+        "id": 198,
+        "charge": "ROUNDTRIP_CHARGE",
+        "rules": [
+            {
+                "id": 2342004,
+                "name": "pickup_position",
+                "value": "12736",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2342005,
+                "name": "dropoff_position",
+                "value": "12736",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 198
+    },
+    {
+        "id": 157,
+        "charge": "WEB_DISCOUNT",
+        "rules": [
+            {
+                "id": 2341884,
+                "name": "valid_for_accounts",
+                "value": "V005",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341888,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341886,
+                "name": "valid_for_ride_until",
+                "value": "1483160400000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341887,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341883,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341885,
+                "name": "valid_for_ride_from",
+                "value": "1421384400000",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.77",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 157
+    },
+    {
+        "id": 191,
+        "charge": "ROUNDTRIP_CHARGE",
+        "rules": [
+            {
+                "id": 2341986,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341984,
+                "name": "pickup_position",
+                "value": "2352",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341985,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 191
+    },
+    {
+        "id": 212,
+        "charge": "GROUP_DISCOUNT",
+        "rules": [
+            {
+                "id": 2342033,
+                "name": "dropoff_position",
+                "value": "12736",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2342032,
+                "name": "pickup_position",
+                "value": "12736",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "BD",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 212
+    },
+    {
+        "id": 202,
+        "charge": "BASE_CHARGE",
+        "rules": [
+            {
+                "id": 2342012,
+                "name": "dropoff_position",
+                "value": "12736",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2342013,
+                "name": "pickup_position",
+                "value": "12736",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "BD",
+        "formula": "$value * 0.75",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 202
+    },
+    {
+        "id": 136,
+        "charge": "GROUP_DISCOUNT",
+        "rules": [
+            {
+                "id": 2341779,
+                "name": "valid_for_canceled_reservation",
+                "value": "true",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341780,
+                "name": "pickup_position",
+                "value": "1",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341778,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 136
+    },
+    {
+        "id": 153,
+        "charge": "MISCELLANEOUS_CHARGE",
+        "rules": [
+            {
+                "id": 2341862,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341859,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341864,
+                "name": "valid_for_ride_from",
+                "value": "1449010800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341860,
+                "name": "valid_for_accounts",
+                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341861,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341863,
+                "name": "valid_for_ride_until",
+                "value": "1546210800000",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.75",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 153
+    },
+    {
+        "id": 147,
+        "charge": "GROUP_DISCOUNT",
+        "rules": [
+            {
+                "id": 2341828,
+                "name": "valid_for_ride_until",
+                "value": "1546210800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341827,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341824,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341826,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341825,
+                "name": "valid_for_ride_from",
+                "value": "1449010800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341823,
+                "name": "valid_for_accounts",
+                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.75",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 147
+    },
+    {
+        "id": 114,
+        "charge": "GROUP_DISCOUNT",
+        "rules": [
+            {
+                "id": 2341719,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341720,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 114
+    },
+    {
+        "id": 116,
+        "charge": "PICKUP_CHARGE",
+        "rules": [
+            {
+                "id": 2341723,
+                "name": "pickup_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341724,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.65",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 116
+    },
+    {
+        "id": 189,
+        "charge": "MISCELLANEOUS_CHARGE",
+        "rules": [
+            {
+                "id": 2341979,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341980,
+                "name": "pickup_position",
+                "value": "2352",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.88",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 189
+    },
+    {
+        "id": 145,
+        "charge": "PROMOCODE_DISCOUNT",
+        "rules": [
+            {
+                "id": 2341814,
+                "name": "valid_for_ride_until",
+                "value": "1546210800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341813,
+                "name": "valid_for_ride_from",
+                "value": "1449010800000",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341816,
+                "name": "valid_for_accounts",
+                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341812,
+                "name": "pickup_position",
+                "value": "9851",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341815,
+                "name": "valid_for_asap_jobs",
+                "value": "false",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341811,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "DRIVER",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.75",
+        "configuration_level": "ACCOUNT",
+        "sequence_number": 145
+    },
+    {
+        "id": 188,
+        "charge": "WAITINGTIME_CHARGE",
+        "rules": [
+            {
+                "id": 2341978,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341977,
+                "name": "pickup_position",
+                "value": "2352",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.88",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 188
+    },
+    {
+        "id": 184,
+        "charge": "ROUNDTRIP_CHARGE",
+        "rules": [
+            {
+                "id": 2341969,
+                "name": "dropoff_position",
+                "value": "0",
+                "operator": "conjunction"
+            },
+            {
+                "id": 2341970,
+                "name": "pickup_position",
+                "value": "2352",
+                "operator": "conjunction"
+            }
+        ],
+        "entity_type": "AFFILIATE",
+        "entity_id": "ALL_ENTITIES",
+        "car_class": "ALL_CAR_CLASSES",
+        "formula": "$value * 0.88",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 184
     },
     {
         "id": 170,
@@ -3228,51 +3246,33 @@
         "sequence_number": 170
     },
     {
-        "id": 146,
-        "charge": "WEB_DISCOUNT",
+        "id": 196,
+        "charge": "MISCELLANEOUS_CHARGE",
         "rules": [
             {
-                "id": 2341819,
-                "name": "valid_for_ride_until",
-                "value": "1546210800000",
+                "id": 2342000,
+                "name": "pickup_position",
+                "value": "2352",
                 "operator": "conjunction"
             },
             {
-                "id": 2341822,
-                "name": "valid_for_ride_from",
-                "value": "1449010800000",
+                "id": 2342001,
+                "name": "valid_for_asap_jobs",
+                "value": "true",
                 "operator": "conjunction"
             },
             {
-                "id": 2341820,
+                "id": 2341999,
                 "name": "dropoff_position",
                 "value": "0",
                 "operator": "conjunction"
-            },
-            {
-                "id": 2341818,
-                "name": "valid_for_accounts",
-                "value": "C6210,L0235,C6220,L6574,B1508,L0225,L0779,V017",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341821,
-                "name": "valid_for_asap_jobs",
-                "value": "false",
-                "operator": "conjunction"
-            },
-            {
-                "id": 2341817,
-                "name": "pickup_position",
-                "value": "9851",
-                "operator": "conjunction"
             }
         ],
-        "entity_type": "DRIVER",
+        "entity_type": "AFFILIATE",
         "entity_id": "ALL_ENTITIES",
         "car_class": "ALL_CAR_CLASSES",
-        "formula": "$value * 0.75",
-        "configuration_level": "ACCOUNT",
-        "sequence_number": 146
+        "formula": "$value * 0.80",
+        "configuration_level": "DEFAULT",
+        "sequence_number": 196
     }
 ]
