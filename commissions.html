@@ -123,15 +123,29 @@
             if (d.name == 'valid_for_ride_from' || d.name == 'valid_for_ride_until') {
                 return d.name + ': ' + format(new Date(1 * d.value));
             } else if (d.name == 'pickup_position' || d.name == 'dropoff_position') {
-                if (d.value == '0') {
-                    return d.name + ': MATCH EVERYTHING';
-                } else {
-                    return d.name + ': ' + d.value;
-                }
-            } else {
-                return d.name + ': ' + d.value;
-            }
-        }
+				var area_name;
+				switch (d.value) {
+					case '0':
+						area_name = 'Match Everything Area';
+						break;
+					case '1':
+						area_name = 'Manhattan';
+						break;
+					case '2352':
+						area_name = 'NYC Metro Area';
+						break;
+					case '9851':
+						area_name = 'Tri-State  Commission';
+						break;
+					case '12736':
+						area_name = 'Distance Based Pricing Area';
+						break;
+					default:
+						area_name = d.value
+				}
+				return d.name + ': ' + area_name;
+        	}
+		}
 
         function update(source) {
             // Compute the new tree layout.
