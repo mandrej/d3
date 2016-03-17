@@ -54,9 +54,9 @@
             return levels.indexOf(a) - levels.indexOf(b)
         }
         function orderALLlast(a, b) {
-            var x = a.startsWith('ALL_') ? 100 : a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
-            var y = b.startsWith('ALL_') ? 100 : a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
-            return x - y;
+			if (a.startsWith('ALL_')) a = 'z';
+			if (b.startsWith('ALL_')) b = 'z';
+			return d3.ascending(a, b);
         }
 
 		function collapse(d) {
@@ -102,8 +102,6 @@
 //                    .entries(definitions.filter(function(d) {return d.id == 157}))
                     .entries(definitions)
             };
-
-//            console.log(root);
 
             root.x0 = height / 2;
             root.y0 = 0;
@@ -220,7 +218,6 @@
             // Update the links…
             var link = svg.selectAll("path.link")
                 .data(links, function(d) {
-					console.log(d.target.id);
                     return d.target.id;
                 });
 
