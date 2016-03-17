@@ -54,8 +54,8 @@
             return levels.indexOf(a) - levels.indexOf(b)
         }
         function orderALLlast(a, b) {
-			if (a.startsWith('ALL_')) a = 'z';
-			if (b.startsWith('ALL_')) b = 'z';
+			if (a.startsWith('ALL_')) a = '~';
+			if (b.startsWith('ALL_')) b = '~';
 			return d3.ascending(a, b);
         }
 
@@ -66,6 +66,7 @@
 				d.values = null;
 			}
 		}
+
 
         d3.json("data/definitions.json", function(error, definitions) {
             if (error) throw error;
@@ -99,7 +100,6 @@
                     .sortValues(function(a, b) {
                         return b.sequence_number - a.sequence_number;
                     })
-//                    .entries(definitions.filter(function(d) {return d.id == 157}))
                     .entries(definitions)
             };
 
@@ -108,6 +108,19 @@
 
             root.values.forEach(collapse);
             update(root);
+
+			var search = definitions.filter(function(rec) {return rec.id == 334;});
+			if (search.length == 1) {
+				var found = search[0],
+					next = root.values;
+
+				['entity_type', 'charge', 'entity_id', 'car_class', 'configuration_level'].forEach(function(property, step) {
+					var keys = next.map(function(item) {return item.key});
+					var index = keys.indexOf(found[property]);
+					click(next[index]);
+					next = next[index].values;
+				});
+			}
         });
 
         function info(d) {
@@ -137,7 +150,9 @@
 						area_name = d.value
 				}
 				return d.name + ': ' + area_name;
-        	}
+        	} else {
+				return d.name + ': ' + d.value;
+			}
 		}
 
         function update(source) {
