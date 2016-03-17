@@ -17,16 +17,25 @@
         stroke: #d3d3d3;
         stroke-width: 1.5px;
     }
+    #search { position: absolute; top: 20px; left: 20px; }
 </style>
 
 <body>
+    <input id="search" type="text" placeholder="commission id">
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script>
+        var areas = {
+            '0': 'Match Everything Area',
+            '1': 'Manhattan',
+            '2352': 'NYC Metro Area',
+            '9851': 'Tri-State  Commission',
+            '12736': 'Distance Based Pricing Area'
+        };
         var margin = {top: 20, right: 120, bottom: 20, left: 120},
             width = 1800 - margin.right - margin.left,
             height = 960 - margin.top - margin.bottom;
 
-        var i = 1000, duration = 750, root;
+        var i = 10000, duration = 750, root;
         var format = d3.time.format("%a, %b %e %I:%M%p %Y");
 
         var tree = d3.layout.tree()
@@ -66,7 +75,6 @@
 				d.values = null;
 			}
 		}
-
 
         d3.json("data/definitions.json", function(error, definitions) {
             if (error) throw error;
@@ -109,18 +117,26 @@
             root.values.forEach(collapse);
             update(root);
 
-			var search = definitions.filter(function(rec) {return rec.id == 334;});
-			if (search.length == 1) {
-				var found = search[0],
-					next = root.values;
+            document.getElementById('search').onkeydown = function(e) {
+                if(e.keyCode==13) search(this.value);
+            }
 
-				['entity_type', 'charge', 'entity_id', 'car_class', 'configuration_level'].forEach(function(property, step) {
-					var keys = next.map(function(item) {return item.key});
-					var index = keys.indexOf(found[property]);
-					click(next[index]);
-					next = next[index].values;
-				});
-			}
+            function search(id) {
+                var search = definitions.filter(function(rec) {return rec.id == id;});
+                if (search.length == 1) {
+                    var found = search[0];
+                    if (!root.values) toggle(root);
+                    var next = root.values;
+                    next.forEach(collapse);
+
+                    ['entity_type', 'charge', 'entity_id', 'car_class', 'configuration_level'].forEach(function(property, step) {
+                        var keys = next.map(function(item) {return item.key});
+                        var index = keys.indexOf(found[property]);
+                        toggle(next[index]);
+                        next = next[index].values;
+                    });
+                }
+            }
         });
 
         function info(d) {
@@ -129,34 +145,17 @@
             if (d.name == 'valid_for_ride_from' || d.name == 'valid_for_ride_until') {
                 return d.name + ': ' + format(new Date(1 * d.value));
             } else if (d.name == 'pickup_position' || d.name == 'dropoff_position') {
-				var area_name;
-				switch (d.value) {
-					case '0':
-						area_name = 'Match Everything Area';
-						break;
-					case '1':
-						area_name = 'Manhattan';
-						break;
-					case '2352':
-						area_name = 'NYC Metro Area';
-						break;
-					case '9851':
-						area_name = 'Tri-State  Commission';
-						break;
-					case '12736':
-						area_name = 'Distance Based Pricing Area';
-						break;
-					default:
-						area_name = d.value
-				}
-				return d.name + ': ' + area_name;
+                try {
+                    return d.name + ': ' + areas[d.value];
+                } catch (err) {
+                    return d.name + ': ' + d.value;
+                }
         	} else {
 				return d.name + ': ' + d.value;
 			}
 		}
 
         function update(source) {
-            // Compute the new tree layout.
             var nodes = tree.nodes(root).reverse(),
                 links = tree.links(nodes);
 
@@ -177,7 +176,7 @@
                 .attr("transform", function(d) {
                     return "translate(" + source.y0 + "," + source.x0 + ")";
                 })
-                .on("click", click);
+                .on("click", toggle);
 
             nodeEnter.append("circle")
                 .attr("r", 1e-6)
@@ -278,7 +277,7 @@
         }
 
         // Toggle children on click.
-        function click(d) {
+        function toggle(d) {
             if (d.values) {
                 d._children = d.values;
                 d.values = null;
@@ -286,15 +285,6 @@
                 d.values = d._children;
                 d._children = null;
             }
-//			http://stackoverflow.com/questions/19167890/d3-js-tree-layout-collapsing-other-nodes-when-expanding-one
-//			If the node has a parent, then collapse its child nodes except for this clicked node.
-//  			if (d.parent) {
-//    			d.parent.children.forEach(function(element) {
-//      				if (d !== element) {
-//        				collapse(element);
-//      				}
-//    			});
-//  			}
             update(d);
         }
     </script>
