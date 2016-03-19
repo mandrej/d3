@@ -33,13 +33,14 @@
         };
         var margin = {top: 20, right: 120, bottom: 20, left: 120},
             width = 1800 - margin.right - margin.left,
-            height = 960 - margin.top - margin.bottom;
+            height = 800 - margin.top - margin.bottom;
 
         var i = 0, duration = 750, root;
         var format = d3.time.format("%a, %b %e %I:%M%p %Y");
 
         var tree = d3.layout.tree()
             .children(function(d) {return d.values || d.rules;})
+            .separation(function(a, b) {return a.parent == b.parent ? 1 : 2;})
             .size([height, width]);
 
         var diagonal = d3.svg.diagonal()
@@ -75,6 +76,26 @@
 				d.values = null;
 			}
 		}
+        // Toggle children on click.
+        function toggle(d) {
+            if (d.values) {
+                d._children = d.values;
+                d.values = null;
+            } else {
+                d.values = d._children;
+                d._children = null;
+            }
+            // If the node has a parent, then collapse its child nodes except for this clicked node.
+//            http://stackoverflow.com/questions/19167890/d3-js-tree-layout-collapsing-other-nodes-when-expanding-one
+            if (d.parent) {
+                d.parent.children.forEach(function(element) {
+                    if (d !== element) {
+                        collapse(element);
+                    }
+                });
+            }
+            update(d);
+        }
 
         d3.json("data/definitions.json", function(error, definitions) {
             if (error) throw error;
@@ -87,20 +108,6 @@
                     delete rule.id;
                 })
             })
-            console.log(definitions);
-
-//            var positions = d3.set(),
-//                formulas = d3.set();
-//            d3.map(definitions).forEach(function(i, rec) {
-//                formulas.add(rec.formula.replace(/\s/g, ''));
-//                d3.map(rec.rules).forEach(function(j, rule) {
-//                    if (rule.name == 'pickup_position' || rule.name == 'dropoff_position') {
-//                        positions.add(rule.value);
-//                    }
-//                })
-//            });
-//            console.log(positions.values());
-//            console.log(formulas.values());
 
             root = {
                 key: 'COMMISSIONS',
@@ -150,8 +157,8 @@
         });
 
         function info(d) {
-            if (d.key) return d.key;
-            if (d.formula) return d.od + ' [' + d.formula + ']';
+            if (d.key) return d.id + ' ' + d.key;
+            if (d.formula) return d.formula;
             if (d.name == 'valid_for_ride_from' || d.name == 'valid_for_ride_until') {
                 return d.name + ': ' + format(new Date(1 * d.value));
             } else if (d.name == 'pickup_position' || d.name == 'dropoff_position') {
@@ -221,9 +228,9 @@
             nodeUpdate.select("text")
                 .style("fill-opacity", 1)
                 .style("font-weight", "bold")
-                .style("fill", function(d){
-                    return d.formula ? "#33f" : "black"
-            });
+                .style("fill", function(d) {
+                    return d.formula ? "#36f" : "black"
+                });
 
             // Transition exiting nodes to the parent's new position.
             var nodeExit = node.exit().transition()
@@ -284,18 +291,6 @@
                 d.x0 = d.x;
                 d.y0 = d.y;
             });
-        }
-
-        // Toggle children on click.
-        function toggle(d) {
-            if (d.values) {
-                d._children = d.values;
-                d.values = null;
-            } else {
-                d.values = d._children;
-                d._children = null;
-            }
-            update(d);
         }
     </script>
 </body>
