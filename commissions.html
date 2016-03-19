@@ -33,7 +33,8 @@
         };
         var margin = {top: 20, right: 120, bottom: 20, left: 120},
             width = 1800 - margin.right - margin.left,
-            height = 800 - margin.top - margin.bottom;
+            height = 800 - margin.top - margin.bottom,
+            horizontal_gap = 180;
 
         var i = 0, duration = 750, root;
         var format = d3.time.format("%a, %b %e %I:%M%p %Y");
@@ -42,9 +43,21 @@
             .scaleExtent([1, 2])
             .on("zoom", zoomed);
 
+        function centerNode(source) {
+            scale = zoom.scale();
+            x = -source.y0;
+            y = -source.x0;
+            x = x * scale + (width - horizontal_gap) / 2;
+            y = y * scale + height / 2;
+            d3.select('g').transition()
+                .duration(duration)
+                .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
+            zoom.scale(scale);
+            zoom.translate([x, y]);
+        }
+
         var tree = d3.layout.tree()
             .children(function(d) {return d.values || d.rules;})
-//            .separation(function(a, b) {return a.parent == b.parent ? 1 : 2;})
             .size([height, width]);
 
         var diagonal = d3.svg.diagonal()
@@ -83,6 +96,7 @@
 		}
         // Toggle children on click.
         function toggle(d) {
+            if (d3.event && d3.event.defaultPrevented) return;
             if (d.values) {
                 d._children = d.values;
                 d.values = null;
@@ -90,7 +104,7 @@
                 d.values = d._children;
                 d._children = null;
             }
-            // If the node has a parent, then collapse its child nodes except for this clicked node.
+//            If the node has a parent, then collapse its child nodes except for this clicked node.
 //            http://stackoverflow.com/questions/19167890/d3-js-tree-layout-collapsing-other-nodes-when-expanding-one
             if (d.parent) {
                 d.parent.children.forEach(function(element) {
@@ -100,6 +114,7 @@
                 });
             }
             update(d);
+            centerNode(d);
         }
 
         d3.json("data/definitions.json", function(error, definitions) {
@@ -138,6 +153,7 @@
 
             root.values.forEach(collapse);
             update(root);
+            centerNode(root);
 
             document.getElementById('search').onkeydown = function(e) {
                 if(e.keyCode==13) search(this.value);
@@ -183,7 +199,7 @@
 
             // Normalize for fixed-depth.
             nodes.forEach(function(d) {
-                d.y = d.depth * 180;
+                d.y = d.depth * horizontal_gap;
             });
 
             // Update the nodes…
