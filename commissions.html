@@ -51,7 +51,9 @@
             if (zooming) {
                 svg.attr("transform","translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
 //                svg.selectAll(".node text").each(function() {
-//                    console.log(this); // d3.event.scale
+//                    var sel = d3.select(this);
+//                    var val = sel.attr("x");
+//                    sel.attr("x", val / d3.event.scale);
 //                });
                 svg.selectAll(".node text").attr("dy", 4 / d3.event.scale + "px");
                 svg.selectAll(".node text").style("font-size", 12 / d3.event.scale + "px");
