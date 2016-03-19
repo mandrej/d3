@@ -38,9 +38,13 @@
         var i = 0, duration = 750, root;
         var format = d3.time.format("%a, %b %e %I:%M%p %Y");
 
+        var zoom = d3.behavior.zoom()
+            .scaleExtent([1, 2])
+            .on("zoom", zoomed);
+
         var tree = d3.layout.tree()
             .children(function(d) {return d.values || d.rules;})
-            .separation(function(a, b) {return a.parent == b.parent ? 1 : 2;})
+//            .separation(function(a, b) {return a.parent == b.parent ? 1 : 2;})
             .size([height, width]);
 
         var diagonal = d3.svg.diagonal()
@@ -51,6 +55,7 @@
         var svg = d3.select("body").append("svg")
             .attr("width", width + margin.right + margin.left)
             .attr("height", height + margin.top + margin.bottom)
+            .call(zoom)
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -291,6 +296,10 @@
                 d.x0 = d.x;
                 d.y0 = d.y;
             });
+        }
+
+        function zoomed() {
+            svg.attr("transform","translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
         }
     </script>
 </body>
