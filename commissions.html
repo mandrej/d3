@@ -5,6 +5,7 @@
     text {
         fill: black;
         font-family: sans-serif;
+/*        pointer-events: none;*/
     }
     .node { cursor: pointer; }
     .node circle {
@@ -34,23 +35,34 @@
         var margin = {top: 20, right: 120, bottom: 20, left: 120},
             width = 1800 - margin.right - margin.left,
             height = 800 - margin.top - margin.bottom,
-            horizontal_gap = 180;
+            gap = 180;
 
-        var zooming = true,
+        var center_node = true,
             collapse_parent_children = false;
 
         var i = 0, duration = 500, root;
         var format = d3.time.format("%a, %b %e %I:%M%p %Y");
 
         var zoom = d3.behavior.zoom()
-            .scaleExtent([1, 5])
+            .scaleExtent([1, 3])
             .on("zoom", refresh);
 
         function refresh() {
-            if (zooming) {
-                svg.attr("transform","translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
-                update(root);
-            }
+            svg.attr("transform","translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")");
+            update(root);
+        }
+
+        function centerNode(source) {
+            var z =  (d3.event && d3.event.scale) ? d3.event.scale : 1;
+            x = -source.y0;
+            y = -source.x0;
+            x = x * z + width / 2;
+            y = y * z + height / 2;
+            d3.select('g').transition()
+                .duration(duration)
+                .attr("transform", "translate(" + x + "," + y + ") scale(" + z + ")");
+            zoom.scale(z);
+            zoom.translate([x, y]);
         }
 
         var tree = d3.layout.tree()
@@ -114,7 +126,7 @@
                 }
             }
             update(d);
-//            if (zooming) update(root);
+            if (center_node) centerNode(d);
         }
 
         d3.json("data/definitions.big.json", function(error, definitions) {
@@ -153,13 +165,14 @@
 
             root.values.forEach(collapse);
             update(root);
+            if (center_node) centerNode(root);
 
             document.getElementById('search').onkeydown = function(e) {
                 if(e.keyCode==13) search(this.value);
             }
 
             function search(id) {
-                var search = definitions.filter(function(rec) {return rec.od == id;});
+                var search = definitions.filter(function(rec) {return rec.od == id;}); // TODO rec.od
                 if (search.length == 1) {
                     var found = search[0];
                     if (!root.values) toggle(root);
@@ -199,8 +212,8 @@
 
             // Normalize for fixed-depth.
             nodes.forEach(function(d) {
-                d.y = d.depth * horizontal_gap;
-//                d.y = d.depth * horizontal_gap / z;
+//                d.y = d.depth * gap;
+                d.y = d.depth * gap / z;
             });
 
             // Update the nodes…
