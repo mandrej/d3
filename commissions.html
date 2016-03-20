@@ -38,28 +38,19 @@
 
         var zooming = true,
             center_node = true,
-            collapse_parent_children = true;
+            collapse_parent_children = false;
 
-        var i = 0, duration = 750, root;
+        var i = 0, duration = 500, root;
         var format = d3.time.format("%a, %b %e %I:%M%p %Y");
 
         var zoom = d3.behavior.zoom()
             .scaleExtent([1, 5])
-            .on("zoom", zoomed);
+            .on("zoom", refresh);
 
-        function zoomed() {
+        function refresh() {
             if (zooming) {
                 svg.attr("transform","translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
-//                svg.selectAll(".node text").each(function() {
-//                    var sel = d3.select(this);
-//                    var val = sel.attr("x");
-//                    sel.attr("x", val / d3.event.scale);
-//                });
-                svg.selectAll(".node text").attr("dy", 4 / d3.event.scale + "px");
-                svg.selectAll(".node text").style("font-size", 12 / d3.event.scale + "px");
-                svg.selectAll(".node circle").attr("r", 8 / d3.event.scale);
-                svg.selectAll(".node circle").style("stroke-width", 1.5 / d3.event.scale + "px");
-                svg.selectAll("path.link").style("stroke-width", 1.5 / d3.event.scale + "px");
+                update(root);
             }
         }
 
@@ -138,11 +129,12 @@
                     });
                 }
             }
-            if (center_node) centerNode(d);
             update(d);
+            if (center_node) centerNode(d);
+            if (zooming) update(root);
         }
 
-        d3.json("data/definitions.json", function(error, definitions) {
+        d3.json("data/definitions.big.json", function(error, definitions) {
             if (error) throw error;
 
             definitions.forEach(function(rec) {
@@ -219,12 +211,14 @@
 		}
 
         function update(source) {
+            var z =  (d3.event && d3.event.scale) ? d3.event.scale : 1;
             var nodes = tree.nodes(root).reverse(),
                 links = tree.links(nodes);
 
             // Normalize for fixed-depth.
             nodes.forEach(function(d) {
                 d.y = d.depth * horizontal_gap;
+//                d.y = d.depth * horizontal_gap / z;
             });
 
             // Update the nodes…
@@ -267,7 +261,12 @@
                 });
 
             nodeUpdate.select("circle")
-                .attr("r", 8)
+                .attr("r", function(d) {
+                    return 8 / z;
+                })
+                .style("stroke-width", function(d) {
+                    return 1.5 / z + "px";
+                })
                 .style("fill", function(d) {
                     return d._children ? "orange" : "white";
                 });
@@ -277,6 +276,15 @@
                 .style("font-weight", "bold")
                 .style("fill", function(d) {
                     return d.formula ? "#36f" : "black"
+                })
+                .style("font-size", function(d) {
+                    return 12 / z + "px";
+                })
+                .attr("dy", function(d) {
+                    return 4 / z + "px";
+                })
+                .attr("x", function(d) {
+                    return d.values || d.rules || d._children ? -12 / z : 12 / z;
                 });
 
             // Transition exiting nodes to the parent's new position.
@@ -316,7 +324,10 @@
             // Transition links to their new position.
             link.transition()
                 .duration(duration)
-                .attr("d", diagonal);
+                .attr("d", diagonal)
+                .style("stroke-width", function(d) {
+                    return 1.5 / z + "px";
+                });
 
             // Transition exiting nodes to the parent's new position.
             link.exit().transition()
