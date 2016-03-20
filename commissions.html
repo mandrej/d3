@@ -39,7 +39,7 @@
         var center_node = true,
             collapse_parent_children = false;
 
-        var i = 0, duration = 500, root;
+        var i = 0, duration = 500, root, FACTOR = 1;
         var format = d3.time.format("%a, %b %e %I:%M%p %Y");
 
         var zoom = d3.behavior.zoom()
@@ -51,20 +51,21 @@
             .on("drag", function() { /* handle drag event here */ });
 
         function refresh() {
-            svg.attr("transform","translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")");
+            FACTOR = d3.event.scale;
+//            console.log(FACTOR);
+            svg.attr("transform","translate(" + d3.event.translate + ") scale(" + FACTOR + ")");
             update(root);
         }
 
         function centerNode(source) {
-            var z =  (d3.event && d3.event.scale) ? d3.event.scale : 1;
             x = -source.y0;
             y = -source.x0;
-            x = x * z + width / 2;
-            y = y * z + height / 2;
+            x = x * FACTOR + width / 2;
+            y = y * FACTOR + height / 2;
             d3.select('g').transition()
                 .duration(duration)
-                .attr("transform", "translate(" + x + "," + y + ") scale(" + z + ")");
-            zoom.scale(z);
+                .attr("transform", "translate(" + x + "," + y + ") scale(" + FACTOR + ")");
+            zoom.scale(FACTOR);
             zoom.translate([x, y]);
         }
 
@@ -210,14 +211,13 @@
 		}
 
         function update(source) {
-            var z =  (d3.event && d3.event.scale) ? d3.event.scale : 1;
             var nodes = tree.nodes(root).reverse(),
                 links = tree.links(nodes);
 
             // Normalize for fixed-depth.
             nodes.forEach(function(d) {
 //                d.y = d.depth * gap;
-                d.y = d.depth * gap / z;
+                d.y = d.depth * gap / FACTOR;
             });
 
             // Update the nodes…
@@ -261,10 +261,10 @@
 
             nodeUpdate.select("circle")
                 .attr("r", function(d) {
-                    return 8 / z;
+                    return 8 / FACTOR;
                 })
                 .style("stroke-width", function(d) {
-                    return 1.5 / z + "px";
+                    return 1.5 / FACTOR + "px";
                 })
                 .style("fill", function(d) {
                     return d._children ? "orange" : "white";
@@ -277,13 +277,13 @@
                     return d.formula ? "#36f" : "black"
                 })
                 .style("font-size", function(d) {
-                    return 12 / z + "px";
+                    return 12 / FACTOR + "px";
                 })
                 .attr("dy", function(d) {
-                    return 4 / z + "px";
+                    return 4 / FACTOR + "px";
                 })
                 .attr("x", function(d) {
-                    return d.values || d.rules || d._children ? -12 / z : 12 / z;
+                    return d.values || d.rules || d._children ? -12 / FACTOR : 12 / FACTOR;
                 });
 
             // Transition exiting nodes to the parent's new position.
@@ -325,7 +325,7 @@
                 .duration(duration)
                 .attr("d", diagonal)
                 .style("stroke-width", function(d) {
-                    return 1.5 / z + "px";
+                    return 1.5 / FACTOR + "px";
                 });
 
             // Transition exiting nodes to the parent's new position.
