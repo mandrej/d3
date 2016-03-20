@@ -37,7 +37,6 @@
             horizontal_gap = 180;
 
         var zooming = true,
-            center_node = true,
             collapse_parent_children = false;
 
         var i = 0, duration = 500, root;
@@ -52,21 +51,6 @@
                 svg.attr("transform","translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
                 update(root);
             }
-        }
-
-        function centerNode(source) {
-            scale = 1;
-            if (zooming) scale = zoom.scale();
-
-            x = -source.y0;
-            y = -source.x0;
-            x = x * scale + width / 2;
-            y = y * scale + height / 2;
-            d3.select('g').transition()
-                .duration(duration)
-                .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
-            zoom.scale(scale);
-            zoom.translate([x, y]);
         }
 
         var tree = d3.layout.tree()
@@ -130,8 +114,7 @@
                 }
             }
             update(d);
-            if (center_node) centerNode(d);
-            if (zooming) update(root);
+//            if (zooming) update(root);
         }
 
         d3.json("data/definitions.big.json", function(error, definitions) {
@@ -170,7 +153,6 @@
 
             root.values.forEach(collapse);
             update(root);
-            if (center_node) centerNode(root);
 
             document.getElementById('search').onkeydown = function(e) {
                 if(e.keyCode==13) search(this.value);
@@ -195,7 +177,7 @@
         });
 
         function info(d) {
-            if (d.key) return d.id + ' ' + d.key;
+            if (d.key) return d.key;
             if (d.formula) return d.formula;
             if (d.name == 'valid_for_ride_from' || d.name == 'valid_for_ride_until') {
                 return d.name + ': ' + format(new Date(1 * d.value));
