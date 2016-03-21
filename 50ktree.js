@@ -1,4 +1,5 @@
-var root, duration = 500;
+var root, duration = 500,
+    maxLabelLength = 20;
 var format = d3.time.format("%a, %b %e %I:%M%p %Y");
 
 var areas = {
@@ -16,7 +17,7 @@ function orderCharges(a, b) {
 	return charges.indexOf(a) - charges.indexOf(b);
 }
 function orderLevels(a, b) {
-	return levels.indexOf(a) - levels.indexOf(b)
+	return levels.indexOf(a) - levels.indexOf(b);
 }
 function orderALLlast(a, b) {
 	if (a.startsWith('ALL_')) a = '~';
@@ -25,16 +26,13 @@ function orderALLlast(a, b) {
 }
 
 function info(d) {
-	if (d.formula) return d.formula;
+	if (d.formula) return d.od + ' ' + d.formula;
 	if (d.name && d.value) {
 		if (d.name == 'valid_for_ride_from' || d.name == 'valid_for_ride_until') {
 			return d.name + ': ' + format(new Date(1 * d.value));
 		} else if (d.name == 'pickup_position' || d.name == 'dropoff_position') {
-			try {
-				return d.name + ': ' + areas[d.value];
-			} catch (err) {
-				return d.name + ': ' + d.value;
-			}
+            var areaName = areas[d.value];
+            return (areaName == undefined) ? d.name + ': ' + d.value : d.name + ': ' + areaName;
 		} else {
 			return d.name + ': ' + d.value;
 		}
@@ -43,7 +41,7 @@ function info(d) {
 	}
 }
 
-treeJSON = d3.json("data/definitions.big.json", function(error, treeData) {
+d3.json("data/definitions.big.json", function(error, treeData) {
 //	http://bl.ocks.org/robschmuecker/7926762
 	var nest = {
 		key: 'COMMISSIONS',
@@ -73,9 +71,8 @@ treeJSON = d3.json("data/definitions.big.json", function(error, treeData) {
 	root = JSON.parse(tmp);
 
     // Calculate total nodes, max label length
-    var totalNodes = 0;
-    var maxLabelLength = 20;
-    var i = 0;
+    var i = 0,
+        totalNodes = 0;
 
     // size of the diagram
     var viewerWidth = $(document).width();
@@ -91,7 +88,6 @@ treeJSON = d3.json("data/definitions.big.json", function(error, treeData) {
         });
 
     // A recursive helper function for performing some setup by walking through all nodes
-
     function visit(parent, visitFn, childrenFn) {
         if (!parent) return;
 
@@ -174,12 +170,41 @@ treeJSON = d3.json("data/definitions.big.json", function(error, treeData) {
     }
 
     // Toggle children on click.
-
     function click(d) {
-        if (d3.event.defaultPrevented) return; // click suppressed
+        if (d3.event && d3.event.defaultPrevented) return; // click suppressed
         d = toggleChildren(d);
         update(d);
         centerNode(d);
+    }
+
+    $('#search').on('keydown', function(e) {
+        if (e.keyCode == 13) search($(this).val());
+    });
+
+    function search(id) {
+        var search = treeData.filter(function(rec) {return rec.id == id;});
+        if (search.length == 1) {
+            var obj = search[0];
+//            if (!root.children) {
+//                click(root);
+//            }
+//            update(root);
+//            centerNode(root);
+            collapse(root);
+            click(root);
+            var keys, index, next = root.children;
+//            next.forEach(collapse);
+
+            ['entity_type', 'charge', 'entity_id', 'car_class', 'configuration_level'].forEach(function(property, step) {
+                keys = next.map(function(item) {return item.name;});
+                index = keys.indexOf(obj[property]);
+                click(next[index]);
+                next = next[index].children;
+            });
+            keys = next.map(function(item) {return item.od;})
+            index = keys.indexOf(1 * id);
+            click(next[index]);
+        }
     }
 
     function update(source) {
@@ -227,9 +252,9 @@ treeJSON = d3.json("data/definitions.big.json", function(error, treeData) {
 
         nodeEnter.append("circle")
             .attr('class', 'nodeCircle')
-            .attr("r", 0)
+            .attr("r", 1e-6)
             .style("fill", function(d) {
-                return d._children ? "lightsteelblue" : "#fff";
+                return d._children ? "orange" : "white";
             });
 
         nodeEnter.append("text")
@@ -258,7 +283,7 @@ treeJSON = d3.json("data/definitions.big.json", function(error, treeData) {
         node.select("circle.nodeCircle")
             .attr("r", 8)
             .style("fill", function(d) {
-                return d._children ? "lightsteelblue" : "#fff";
+                return d._children ? "orange" : "white";
             });
 
         // Transition nodes to their new position.
@@ -270,7 +295,10 @@ treeJSON = d3.json("data/definitions.big.json", function(error, treeData) {
 
         // Fade the text in
         nodeUpdate.select("text")
-            .style("fill-opacity", 1);
+            .style("fill-opacity", 1)
+            .style("fill", function(d) {
+                return d.formula ? "#36f" : "black"
+            });
 
         // Transition exiting nodes to the parent's new position.
         var nodeExit = node.exit().transition()
@@ -281,7 +309,7 @@ treeJSON = d3.json("data/definitions.big.json", function(error, treeData) {
             .remove();
 
         nodeExit.select("circle")
-            .attr("r", 0);
+            .attr("r", 1e-6);
 
         nodeExit.select("text")
             .style("fill-opacity", 0);
@@ -341,7 +369,7 @@ treeJSON = d3.json("data/definitions.big.json", function(error, treeData) {
     root.y0 = 0;
 
 	// Collapse all children of roots children before rendering.
-	root.children.forEach(function(child){
+	root.children.forEach(function(child) {
 		collapse(child);
 	});
 
