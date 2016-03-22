@@ -114,7 +114,6 @@ d3.json("data/definitions.big.json", function(error, treeData) {
         svgGroup.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
     }
 
-
     // define the zoomListener which calls the zoom function on the "zoom" event constrained within the scaleExtents
     var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
 
@@ -125,7 +124,6 @@ d3.json("data/definitions.big.json", function(error, treeData) {
         .attr("class", "overlay")
         .call(zoomListener);
 
-
     // Helper functions for collapsing and expanding nodes.
     function collapse(d) {
         if (d.children) {
@@ -134,7 +132,7 @@ d3.json("data/definitions.big.json", function(error, treeData) {
             d.children = null;
         }
     }
-
+	
     function expand(d) {
         if (d._children) {
             d.children = d._children;
@@ -168,7 +166,7 @@ d3.json("data/definitions.big.json", function(error, treeData) {
         }
         return d;
     }
-
+	
     // Toggle children on click.
     function click(d) {
         if (d3.event && d3.event.defaultPrevented) return; // click suppressed
@@ -178,33 +176,30 @@ d3.json("data/definitions.big.json", function(error, treeData) {
     }
 
     $('#search').on('keydown', function(e) {
-        if (e.keyCode == 13) search($(this).val());
+        if (e.keyCode == 13) {
+			var id = 1 * $(this).val();
+			var found = treeData.filter(function(rec) {return rec.id === id;});
+			if (found.length == 1) search(found[0]);
+		}
     });
 
-    function search(id) {
-        var search = treeData.filter(function(rec) {return rec.id == id;});
-        if (search.length == 1) {
-            var obj = search[0];
-//            if (!root.children) {
-//                click(root);
-//            }
-//            update(root);
-//            centerNode(root);
-            collapse(root);
-            click(root);
-            var keys, index, next = root.children;
-//            next.forEach(collapse);
+    function search(obj) {
+		var keys, index, next;
+		if (!root.children) click(root);
 
-            ['entity_type', 'charge', 'entity_id', 'car_class', 'configuration_level'].forEach(function(property, step) {
-                keys = next.map(function(item) {return item.name;});
-                index = keys.indexOf(obj[property]);
-                click(next[index]);
-                next = next[index].children;
-            });
-            keys = next.map(function(item) {return item.od;})
-            index = keys.indexOf(1 * id);
-            click(next[index]);
-        }
+		next = root.children;
+		root.children.forEach(function(child) {
+			collapse(child);
+		});
+		['entity_type', 'charge', 'entity_id', 'car_class', 'configuration_level'].forEach(function(property, step) {
+			keys = next.map(function(item) {return item.name;});
+			index = keys.indexOf(obj[property]);
+			click(next[index]);
+			next = next[index].children;
+		});
+		keys = next.map(function(item) {return item.od;})
+		index = keys.indexOf(obj.id);
+		click(next[index]);
     }
 
     function update(source) {
@@ -252,7 +247,7 @@ d3.json("data/definitions.big.json", function(error, treeData) {
 
         nodeEnter.append("circle")
             .attr('class', 'nodeCircle')
-            .attr("r", 1e-6)
+            .attr("r", 0)
             .style("fill", function(d) {
                 return d._children ? "orange" : "white";
             });
@@ -297,7 +292,7 @@ d3.json("data/definitions.big.json", function(error, treeData) {
         nodeUpdate.select("text")
             .style("fill-opacity", 1)
             .style("fill", function(d) {
-                return d.formula ? "#36f" : "black"
+                return d.formula ? "#096b9c" : "black"
             });
 
         // Transition exiting nodes to the parent's new position.
@@ -308,8 +303,8 @@ d3.json("data/definitions.big.json", function(error, treeData) {
             })
             .remove();
 
-        nodeExit.select("circle")
-            .attr("r", 1e-6);
+//        nodeExit.select("circle")
+//            .attr("r", 0);
 
         nodeExit.select("text")
             .style("fill-opacity", 0);
