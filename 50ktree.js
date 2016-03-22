@@ -188,16 +188,15 @@ d3.json("data/definitions.big.json", function(error, treeData) {
 		if (!root.children) click(root);
 
 		next = root.children;
-		root.children.forEach(function(child) {
-			collapse(child);
-		});
+        next.forEach(collapse);
 		['entity_type', 'charge', 'entity_id', 'car_class', 'configuration_level'].forEach(function(property, step) {
 			keys = next.map(function(item) {return item.name;});
 			index = keys.indexOf(obj[property]);
 			click(next[index]);
 			next = next[index].children;
+            next.forEach(collapse);
 		});
-		keys = next.map(function(item) {return item.od;})
+		keys = next.map(function(item) {return item.od;});
 		index = keys.indexOf(obj.id);
 		click(next[index]);
     }
@@ -364,9 +363,7 @@ d3.json("data/definitions.big.json", function(error, treeData) {
     root.y0 = 0;
 
 	// Collapse all children of roots children before rendering.
-	root.children.forEach(function(child) {
-		collapse(child);
-	});
+	root.children.forEach(collapse);
 
     // Layout the tree initially and center on the root node.
     update(root);
