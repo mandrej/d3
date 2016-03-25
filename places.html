@@ -18,26 +18,25 @@
 	<h4>Results from google.maps.Geocoder by Place ID</h4>
 	<ol id="better"></ol>
 	<script>
-		// Initialize the map.
-		function initMap() {
+		function clear() {
+			var ol = document.getElementById('results');
+			var lis = ol.getElementsByTagName('li');
+			while (lis[0]) {
+				lis[0].parentNode.removeChild(lis[0]);
+			}
+			var ol = document.getElementById('better');
+			var lis = ol.getElementsByTagName('li');
+			while (lis[0]) {
+				lis[0].parentNode.removeChild(lis[0]);
+			}
+		}
+		function init() {
 			var service = new google.maps.places.AutocompleteService();
-
 			document.getElementById('submit').addEventListener('click', function () {
-				var ol = document.getElementById('results');
-				var lis = ol.getElementsByTagName('li');
-				while (lis[0]) {
-					lis[0].parentNode.removeChild(lis[0]);
-				}
-				var ol = document.getElementById('better');
-				var lis = ol.getElementsByTagName('li');
-				while (lis[0]) {
-					lis[0].parentNode.removeChild(lis[0]);
-				}
-
+				clear();
 				var query = document.getElementById('query').value;
 				service.getQueryPredictions({
-					input: query,
-					types: ['address', 'geocode']
+					input: query
 				}, function (predictions, status) {
 					if (status != google.maps.places.PlacesServiceStatus.OK) {
 						alert(status);
@@ -76,7 +75,7 @@
 			});
 		}
 	</script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=init" async defer></script>
 </body>
 
 </html>
