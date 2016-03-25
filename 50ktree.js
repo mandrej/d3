@@ -12,7 +12,7 @@ var areas = {
 
 var charges = ["BASE_CHARGE", "ROUNDTRIP_CHARGE", "ACCOUNT_CHARGE", "PROMOCODE_DISCOUNT", "GROUP_DISCOUNT", "WEB_DISCOUNT", "STOPS_CHARGE", "WAITINGTIME_CHARGE", "PICKUP_CHARGE", "SERVICE_CHARGE", "TOLLS_CHARGE", "PARKING_CHARGE", "BABYSEATS_CHARGE", "MISCELLANEOUS_CHARGE", "VOUCHER_CHARGE"];
 var levels = ["ACCOUNT", "PARTNER", "DEFAULT"];
-var rules = ["pickup_position", "allowed_for_pickup_date_time", "dropoff_position", "valid_for_accounts", "valid_for_partners", "valid_for_asap_jobs", "valid_for_canceled_reservation", "valid_for_ride_from", "valid_for_ride_until"]
+var rules = ["pickup_position", "allowed_for_pickup_date_time", "dropoff_position", "valid_for_accounts", "valid_for_partners", "valid_for_asap_jobs", "valid_for_canceled_reservation", "valid_for_ride_from", "valid_for_ride_until"];
 
 function orderCharges(a, b) {
 	return charges.indexOf(a) - charges.indexOf(b);

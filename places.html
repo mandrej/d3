@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<meta charset="utf-8">
+	<title>Geocoding by Place ID</title>
+	<style>
+		body { font-family: sans-serif; }
+	</style>
+</head>
+<body>
+	<div id="floating-panel">
+		<input id="query" type="text" value="holiday inn clevland">
+		<input id="submit" type="button" value="Resolve address">
+	</div>
+	<h4>Results from google.maps.places.AutocompleteService</h4>
+	<ol id="results"></ol>
+	<h4>Results from google.maps.Geocoder by Place ID</h4>
+	<ol id="better"></ol>
+	<script>
+		// Initialize the map.
+		function initMap() {
+			var service = new google.maps.places.AutocompleteService();
+
+			document.getElementById('submit').addEventListener('click', function () {
+				var ol = document.getElementById('results');
+				var lis = ol.getElementsByTagName('li');
+				while (lis[0]) {
+					lis[0].parentNode.removeChild(lis[0]);
+				}
+				var ol = document.getElementById('better');
+				var lis = ol.getElementsByTagName('li');
+				while (lis[0]) {
+					lis[0].parentNode.removeChild(lis[0]);
+				}
+
+				var query = document.getElementById('query').value;
+				service.getQueryPredictions({
+					input: query,
+					types: ['address', 'geocode']
+				}, function (predictions, status) {
+					if (status != google.maps.places.PlacesServiceStatus.OK) {
+						alert(status);
+						return;
+					}
+					predictions.forEach(function (prediction) {
+						if (prediction.place_id) {
+							var li = document.createElement('li');
+							li.appendChild(document.createTextNode(prediction.description));
+							document.getElementById('results').appendChild(li);
+							geocodePlaceId(prediction.place_id);
+						}
+					});
+				});
+			});
+		}
+
+		function geocodePlaceId(placeId) {
+			var geocoder = new google.maps.Geocoder;
+			var infowindow = new google.maps.InfoWindow;
+			geocoder.geocode({
+				'placeId': placeId
+			}, function (results, status) {
+				if (status === google.maps.GeocoderStatus.OK) {
+					if (results[0]) {
+						var li = document.createElement('li');
+						li.appendChild(document.createTextNode(results[0].formatted_address));
+						document.getElementById('better').appendChild(li);
+
+					} else {
+						window.alert('No results found');
+					}
+				} else {
+					window.alert('Geocoder failed due to: ' + status);
+				}
+			});
+		}
+	</script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
+</body>
+
+</html>
