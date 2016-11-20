@@ -9,12 +9,15 @@
                 font-family: sans-serif;
             }
             h1, h2, p {
+                margin: 0;
+                padding: 10px 0;
                 color: #333;
                 line-height: 20px;
             }
             a {
                 color: inherit;
             }
+            .dc-chart g.row text { fill: black; }
         </style>
     </head>
     <body>
@@ -40,11 +43,19 @@
                     <div></div>
                 </div>
             </div>
-            <div id="days" style="display: flex; flex-direction: column">
-                <h2>years
-                    <a href="javascript:daysChart.filterAll();dc.redrawAll();">filter reset</a>
-                </h2>
-                <div></div>
+            <div style="display: flex; flex-direction: column">
+                <div id="age">
+                    <h2>age
+                        <a href="javascript:ageGraph.filterAll();dc.redrawAll();">filter reset</a>
+                    </h2>
+                    <div></div>
+                </div>
+                <div id="days" style="display: flex; flex-direction: column">
+                    <h2>years
+                        <a href="javascript:daysChart.filterAll();dc.redrawAll();">filter reset</a>
+                    </h2>
+                    <div></div>
+                </div>
             </div>
         </div>
 
@@ -57,6 +68,7 @@
             var diseaseGraph = dc.rowChart('#disease div'),
                 genderGraph = dc.rowChart('#gender div'),
                 stageGraph = dc.rowChart('#stage div'),
+                ageGraph = dc.barChart('#age div'),
                 daysChart = dc.barChart("#days"),
                 counterWidget = dc.dataCount("#count");;
 
@@ -89,10 +101,12 @@
                         .gap(1)
                         .colors(d3.scale.category20())
                         .label(function(d) {
+                            if (diseaseGraph.hasFilter() && !diseaseGraph.hasFilter(d.key)) return d.key + " (N/A)";
                             return d.key + " (" + formatPercent(d.value / all.value()) + ")";
                         })
                         .renderLabel(true)
                         .title(function(d) {
+                            if (diseaseGraph.hasFilter() && !diseaseGraph.hasFilter(d.key)) return d.key + " (N/A)";
                             return d.key + " (" + formatPercent(d.value / all.value()) + ")";
                         })
                         .renderTitle(true);
@@ -105,34 +119,47 @@
                         .elasticX(true)
                         .ordinalColors(['#fa4b3f', '#1f77b4'])
                         .label(function(d) {
+                            if (genderGraph.hasFilter() && !genderGraph.hasFilter(d.key)) return d.key + " (N/A)";
                             return d.key + " (" + formatPercent(d.value / all.value()) + ")";
                         })
                         .renderLabel(true)
                         .title(function(d) {
+                            if (genderGraph.hasFilter() && !genderGraph.hasFilter(d.key)) return d.key + " (N/A)";
                             return d.key + " (" + formatPercent(d.value / all.value()) + ")";
                         })
                         .renderTitle(true);
 
                     stageGraph
                         .width(300)
-                        .height(530 )
+                        .height(550 )
                         .dimension(stage_dim)
                         .group(stage_dim.group())
                         .elasticX(true)
                         .gap(1)
                         .colors(d3.scale.category10())
                         .label(function(d) {
+                            if (stageGraph.hasFilter() && !stageGraph.hasFilter(d.key)) return d.key + " (N/A)";
                             return d.key + " (" + formatPercent(d.value / all.value()) + ")";
                         })
                         .renderLabel(true)
                         .title(function(d) {
+                            if (stageGraph.hasFilter() && !stageGraph.hasFilter(d.key)) return d.key + " (N/A)";
                             return d.key + " (" + formatPercent(d.value / all.value()) + ")";
                         })
                         .renderTitle(true);
 
+                    ageGraph
+                        .width(800)
+                        .height(350 )
+                        .dimension(age_dim)
+                        .group(age_dim.group())
+                        .colors(d3.scale.category10())
+                        .x(d3.scale.linear().domain([10,80]))
+                        .elasticY(true);;
+
                     daysChart
                         .width(800)
-                        .height(800)
+                        .height(400)
                         .dimension(days_dim)
                         .group(days_dim.group().reduceCount(function(d) { return d.days/365}))
                         .x(d3.scale.linear().domain([0,30]))
