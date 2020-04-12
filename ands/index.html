@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    .node circle { stroke: #fff; stroke-width: 1.5px; }
+    .node text {
+        fill: #000;
+        font-family: sans-serif;
+        font-size: 12px;
+    }
+    .link { stroke: #999; stroke-opacity: 0.6; }
+</style>
+<body>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script>
+    var width = 1000, height = 750;
+    var color = d3.scale.category20();
+    var svg = d3.select('body').append('svg')
+        .attr({'width': '100%', 'height': '100%'})
+        .attr('viewBox', '0 0 ' + width + ' ' + height)
+        .attr('preserveAspectRatio', 'xMidYMid meet')
+        .attr('pointer-events', 'all');
+    //    .call(d3.behavior.zoom().on('zoom', redraw));
+
+    var vis = svg.append('svg:g');
+
+    //function redraw() {
+    //    vis.attr('transform', 'translate(' + d3.event.translate + ')' + ' scale(' + d3.event.scale + ')');
+    //}
+
+    var force = d3.layout.force()
+        .size([width, height]);
+
+    d3.json('ands.json', function(error, graph) {
+        var maxCount = d3.max(graph.nodes, function(d) { return d.count; });
+        var maxValue = d3.max(graph.links, function(d) { return d.value; });
+        var linkScale = d3.scale.linear()
+            .domain([1, maxValue])
+            .range([1, 10]);
+
+        var distanceScale = d3.scale.linear()
+            .domain([1, maxValue])
+            .range([250, 50]);
+
+        var radiusScale = d3.scale.log()
+            .domain([1, maxCount])
+            .range([10, height/20]);
+
+        force
+            .nodes(graph.nodes)
+            .links(graph.links)
+            .charge(-100)
+            .chargeDistance(50)
+            .gravity(0.01)
+            .friction(0.1)
+            .linkDistance(function(d) { return distanceScale(d.value); })
+            .start();
+
+
+        //http://www.coppelia.io/2014/07/an-a-to-z-of-extra-features-for-the-d3-force-layout/
+        var padding = 5, radius=10;
+        function collide(alpha) {
+          var quadtree = d3.geom.quadtree(graph.nodes);
+          return function(d) {
+            var rb = 2*radius + padding,
+                nx1 = d.x - rb,
+                nx2 = d.x + rb,
+                ny1 = d.y - rb,
+                ny2 = d.y + rb;
+            quadtree.visit(function(quad, x1, y1, x2, y2) {
+              if (quad.point && (quad.point !== d)) {
+                var x = d.x - quad.point.x,
+                    y = d.y - quad.point.y,
+                    l = Math.sqrt(x * x + y * y);
+                  if (l < rb) {
+                  l = (l - rb) / l * alpha;
+                  d.x -= x *= l;
+                  d.y -= y *= l;
+                  quad.point.x += x;
+                  quad.point.y += y;
+                }
+              }
+              return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+            });
+          };
+        }
+        var toggle = 0;
+        var linkedByIndex = {};
+        for (i = 0; i < graph.nodes.length; i++) {
+            linkedByIndex[i + ',' + i] = 1;
+        };
+        graph.links.forEach(function (d) {
+            linkedByIndex[d.source.index + ',' + d.target.index] = 1;
+        });
+        function neighboring(a, b) {
+            return linkedByIndex[a.index + ',' + b.index];
+        }
+        function connectedNodes() {
+            if (toggle == 0) {
+                d = d3.select(this).node().__data__;
+                node.style('opacity', function (o) {
+                    return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
+                });
+                link.style('opacity', function (o) {
+                    return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
+                });
+                toggle = 1;
+            } else {
+                node.style('opacity', 1);
+                link.style('opacity', 1);
+                toggle = 0;
+            }
+        }
+
+        var link = vis.selectAll('.link')
+            .data(graph.links)
+            .enter().append('line')
+            .attr('class', 'link')
+            .style('stroke-width', function(d) { return linkScale(d.value); });
+
+        var node = vis.selectAll('.node')
+            .data(graph.nodes)
+            .enter().append('g')
+            .attr('class', 'node')
+            .call(force.drag)
+            .on('dblclick', connectedNodes);
+
+        var circle = node.append('circle')
+            .attr('r', function(d) { return radiusScale(d.count); })
+            .style('fill', function(d) { return color(d.index); });
+
+        var text = node.append('text')
+            .text(function(d) { return d.name; })
+            .attr('text-anchor', 'middle')
+            .attr('dy', 4)
+            .attr('pointer-events', 'none');
+
+        force.on('tick', function() {
+            node.each(collide(0.5));
+
+            link.attr('x1', function(d) { return d.source.x; })
+                .attr('y1', function(d) { return d.source.y; })
+                .attr('x2', function(d) { return d.target.x; })
+                .attr('y2', function(d) { return d.target.y; });
+
+            circle.attr('cx', function(d) { return d.x; })
+                .attr('cy', function(d) { return d.y; });
+
+            text.attr('transform', function(d) {
+                return 'translate(' + d.x + ',' + d.y + ')';
+            });
+        });
+    });
+</script>
+</body>

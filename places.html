@@ -62,6 +62,7 @@
 			}, function (results, status) {
 				if (status === google.maps.GeocoderStatus.OK) {
 					if (results[0]) {
+						console.log(results);
 						var li = document.createElement('li');
 						li.appendChild(document.createTextNode(results[0].formatted_address));
 						document.getElementById('better').appendChild(li);
