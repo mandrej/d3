@@ -19,7 +19,7 @@
 </style>
 
 <body>
-    <h1>COVID-19 pandemic</h1>
+    <h1>COVID-19 pandemic on <span id="latest"></span></h1>
     <p>by milan andrejevic, data from <a href="https://ourworldindata.org/coronavirus-source-data">Our World in Data</a>
     </p>
     <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -37,6 +37,7 @@
             "Serbia": 6.804596,
             "Slovenia": 2.078932,
             "Croatia": 4.105268,
+            "Spain": 46.754783,
             "Italy": 60.461828,
             "Germany": 83.783945,
             "United States": 331.002647,
@@ -46,6 +47,7 @@
 
         d3.csv("https://covid.ourworldindata.org/data/ecdc/full_data.csv").then(raw => {
             chart(raw, "total_cases");
+            chart(raw, "new_cases");
             chart(raw, "total_deaths");
         });
 
@@ -90,6 +92,10 @@
                 .range([height, 0]);
             var zScale = d3.scaleOrdinal(d3.schemeCategory10)
                 .domain(byLocation.map(function (c) { return c.location; }));
+
+            var latest = d3.max(data, function (d) { return d.date });
+            var format = d3.timeFormat("%d.%m.%Y %H:%M");
+            document.getElementById("latest").innerHTML = format(latest);
 
             // line generator
             var line = d3.line()
@@ -140,39 +146,37 @@
                     .tickSize(-width)
                     .tickFormat(""));
 
-            // add labels
+            // add x-label
             svg.append("text")
-                .attr("transform",
-                    "translate(" + (width / 2) + " ," +
-                    (height + margin.top + 20) + ")")
+                .attr("class", "label")
+                .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.top + 20) + ")")
                 .style("text-anchor", "middle")
                 .text("date");
-            svg.append("text")
-                .attr("transform", "translate(" + (margin.left - 10) + " ," + (margin.top - 25) + ")")
-                .attr("dy", "1.3em")
-                .style("text-anchor", "start")
-                .style("font", "24px sans-serif")
-                .text(value + " / per million");
 
             // add legend
-            svg.selectAll("mydots")
+            var legend = svg.append("g")
+                .attr("class", "legend")
+                .attr("transform", "translate(" + (margin.left - 30) + "," + (margin.top + 20) + ")");
+            legend.append("text")
+                .style("font", "24px sans-serif")
+                .text(value + " / per million");
+            legend.selectAll("circle")
                 .data(countries)
                 .enter()
                 .append("circle")
-                .attr("class", "dot")
-                .attr("cx", 50)
-                .attr("cy", function (d, i) { return 50 + i * 20 }) // 100 is where the first dot appears. 25 is the distance between dots
+                .attr("cx", 10)
+                .attr("cy", function (d, i) { return 20 + i * 20 }) // 100 is where the first dot appears. 25 is the distance between dots
                 .attr("r", 7)
                 .style("fill", function (d) { return zScale(d) });
-            svg.selectAll("mylabels")
+            legend.selectAll(".country")
                 .data(countries)
                 .enter()
                 .append("text")
-                .attr("x", 60)
-                .attr("y", function (d, i) { return 51 + i * 20 }) // 100 is where the first dot appears. 25 is the distance between dots
+                .attr("class", "country")
+                .attr("x", 20)
+                .attr("y", function (d, i) { return 21 + i * 20 }) // 100 is where the first dot appears. 25 is the distance between dots
                 .style("fill", function (d) { return zScale(d) })
                 .text(function (d) { return d })
-                .attr("text-anchor", "left")
                 .style("alignment-baseline", "middle");
 
             // add lines byLocation
@@ -186,5 +190,13 @@
                 .attr("d", d => { return line(d.values); })
                 .style("stroke", function (d) { return zScale(d.location) });
         }
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-8994922-4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-8994922-4');
     </script>
 </body>
