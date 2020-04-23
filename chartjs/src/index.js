@@ -56,8 +56,20 @@ axios.get('https://covid.ourworldindata.org/data/ecdc/full_data.csv').then(resp 
         type: 'time',
         time: {
             unit: 'week',
+            isoWeekday: true,
             displayFormats: {
                 week: 'DD.MMM'
+            }
+        }
+    }];
+
+    const yLogAxes = [{
+        type: 'logarithmic',
+        ticks: {
+            min: 0.1,
+            autoSkipPadding: 14,
+            callback: function (value, index, values) {
+                return Number(value.toString())
             }
         }
     }];
@@ -86,31 +98,37 @@ axios.get('https://covid.ourworldindata.org/data/ecdc/full_data.csv').then(resp 
         }
     });
 
-    const ctx1 = document.getElementById('chart1').getContext('2d');
-    const chart1 = new Chart(ctx1, {
+    const datasets3 = Object.keys(locations).map(country => {
+        return {
+            label: country,
+            data: data.filter(d => {
+                return d.location === country
+            }).map(d => {
+                return { x: d.date, y: d.total_cases / locations[country] }
+            }),
+            hidden: (country === 'Serbia') ? false : true
+        }
+    });
+
+    const chart1 = new Chart(document.getElementById('chart1').getContext('2d'), {
         type: 'line',
         data: {
             datasets: datasets1
         },
         options: {
+            title: {
+                text: 'Daily cases / per million'
+            },
             legend: {
-                display: true,
                 onClick: function (evt, item) {
                     Chart.defaults.global.legend.onClick.call(chart1, evt, item)
                     Chart.defaults.global.legend.onClick.call(chart2, evt, item)
+                    Chart.defaults.global.legend.onClick.call(chart3, evt, item)
                 }
             },
             scales: {
                 xAxes: xAxes,
-                yAxes: [{
-                    type: 'logarithmic',
-                    ticks: {
-                        min: 0.1,
-                        callback: function (value, index, values) {
-                            return Number(value.toString())
-                        }
-                    }
-                }]
+                yAxes: yLogAxes
             },
             tooltips: {
                 callbacks: {
@@ -124,15 +142,21 @@ axios.get('https://covid.ourworldindata.org/data/ecdc/full_data.csv').then(resp 
         }
     });
 
-    const ctx2 = document.getElementById('chart2').getContext('2d');
-    const chart2 = new Chart(ctx2, {
+    const chart2 = new Chart(document.getElementById('chart2').getContext('2d'), {
         type: 'line',
         data: {
             datasets: datasets2
         },
         options: {
+            title: {
+                text: 'Total deaths / total cases'
+            },
             legend: {
-                display: false
+                onClick: function (evt, item) {
+                    Chart.defaults.global.legend.onClick.call(chart1, evt, item)
+                    Chart.defaults.global.legend.onClick.call(chart2, evt, item)
+                    Chart.defaults.global.legend.onClick.call(chart3, evt, item)
+                }
             },
             scales: {
                 xAxes: xAxes,
@@ -156,11 +180,57 @@ axios.get('https://covid.ourworldindata.org/data/ecdc/full_data.csv').then(resp 
             }
         }
     });
+
+    const chart3 = new Chart(document.getElementById('chart3').getContext('2d'), {
+        type: 'line',
+        data: {
+            datasets: datasets3
+        },
+        options: {
+            title: {
+                text: 'Total cases / per million'
+            },
+            legend: {
+                onClick: function (evt, item) {
+                    Chart.defaults.global.legend.onClick.call(chart1, evt, item)
+                    Chart.defaults.global.legend.onClick.call(chart2, evt, item)
+                    Chart.defaults.global.legend.onClick.call(chart3, evt, item)
+                }
+            },
+            scales: {
+                xAxes: xAxes,
+                yAxes: yLogAxes
+            },
+            tooltips: {
+                callbacks: {
+                    label: function (tooltipItem, data) {
+                        let label = data.datasets[tooltipItem.datasetIndex].label + ' ';
+                        label += Math.round(tooltipItem.yLabel * 10) / 10;
+                        return label;
+                    }
+                }
+            }
+        }
+    });
+
 });
 
-Chart.defaults.global.responsive = true;
+Chart.defaults.global.title.display = true;
+Chart.defaults.global.title.fontSize = 18;
+Chart.defaults.global.legend.align = 'end';
+Chart.defaults.global.legend.position = 'right';
 Chart.defaults.global.tooltips.mode = 'x';
 Chart.defaults.global.tooltips.intersect = true;
 Chart.defaults.global.elements.line.fill = false;
 Chart.defaults.global.legend.labels.boxWidth = 12;
 Chart.defaults.global.plugins.colorschemes.scheme = 'tableau.Tableau10';
+
+document.getElementById("download1").addEventListener('click', function () {
+    this.href = document.getElementById("chart1").toDataURL("image/png");
+});
+document.getElementById("download2").addEventListener('click', function () {
+    this.href = document.getElementById("chart2").toDataURL("image/png");
+});
+document.getElementById("download3").addEventListener('click', function () {
+    this.href = document.getElementById("chart3").toDataURL("image/png");
+});

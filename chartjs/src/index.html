@@ -1,13 +1,36 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="/styles.css"> -->
 <meta charset="utf-8">
-<link rel="stylesheet" href="/styles.css">
 
 <body>
-    <h1>COVID-19 pandemic</h1>
-    <p>by <a href="https://twitter.com/mandrej">milan andrejevic</a>, data from <a
-            href="https://ourworldindata.org/coronavirus-source-data">Our World in
-            Data</a></p>
-    <h4>Daily cases / per million</h4>
-    <canvas id="chart1" width="600" height="400"></canvas>
-    <h4>Total deaths / total cases</h4>
-    <canvas id="chart2" width="600" height="400"></canvas>
+    <div class="container-fluid">
+        <h3 class="d-inline-block my-2 p-2 bg-secondary text-light">COVID-19 pandemic</h3>
+        <p>by <a href="https://twitter.com/mandrej">milan andrejevic</a>,
+            data from <a href="https://ourworldindata.org/coronavirus-source-data">Our World in Data</a>
+        </p>
+        <div class="row">
+            <div class="col-sm-12">
+                <canvas id="chart1"></canvas>
+                <p class="text-right">
+                    <a id="download1" class="btn btn-primary btn-sm" href="#" role="button"
+                        download="daily_cases_per_million.png">download chart</a>
+                </p>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <canvas id="chart2"></canvas>
+                <p class="text-right">
+                    <a id="download2" class="btn btn-primary btn-sm" href="#" role="button"
+                        download="total_deaths_per_total_cases.png">download chart</a>
+                </p>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <canvas id="chart3"></canvas>
+                <p class="text-right">
+                    <a id="download3" class="btn btn-primary btn-sm" href="#" role="button"
+                        download="total_cases_per_million.png">download chart</a>
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
