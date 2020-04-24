@@ -29,7 +29,7 @@ function parse (csv) {
         for (let j = 0; j < headers.length; j++) {
             switch (headers[j]) {
                 case 'date':
-                    obj[headers[j]] = moment(currentline[j]);
+                    obj[headers[j]] = moment(currentline[j], 'YYYY-MM-DD');
                     break
                 case 'new_cases':
                 case 'new_deaths':
@@ -85,6 +85,8 @@ axios.get('https://covid.ourworldindata.org/data/ecdc/full_data.csv').then(resp 
             hidden: (country === 'Serbia') ? false : true
         }
     });
+    const latest = datasets1[0].data.slice(-1)[0].x.format('DD.MM.YYYY');
+    document.getElementById('latest').innerHTML = latest;
 
     const datasets2 = Object.keys(locations).map(country => {
         return {
@@ -215,6 +217,8 @@ axios.get('https://covid.ourworldindata.org/data/ecdc/full_data.csv').then(resp 
 
 });
 
+Chart.defaults.global.responsive = true;
+Chart.defaults.global.maintainAspectRatio = false;
 Chart.defaults.global.title.display = true;
 Chart.defaults.global.title.fontSize = 18;
 Chart.defaults.global.legend.align = 'end';
@@ -222,6 +226,7 @@ Chart.defaults.global.legend.position = 'right';
 Chart.defaults.global.tooltips.mode = 'x';
 Chart.defaults.global.tooltips.intersect = true;
 Chart.defaults.global.elements.line.fill = false;
+Chart.defaults.global.elements.point.radius = 0;
 Chart.defaults.global.legend.labels.boxWidth = 12;
 Chart.defaults.global.plugins.colorschemes.scheme = 'tableau.Tableau10';
 
